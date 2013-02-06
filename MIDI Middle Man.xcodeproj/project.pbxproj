@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C29F8B3116C27D5200D49492 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F8B3016C27D5200D49492 /* CoreMIDI.framework */; };
 		C2F172F116C274A800298B7C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2F172F016C274A800298B7C /* main.cpp */; };
 		C2F172F316C274A800298B7C /* MIDI_Middle_Man.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C29F8B3016C27D5200D49492 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		C2F172ED16C274A800298B7C /* MIDI Middle Man */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "MIDI Middle Man"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F172F016C274A800298B7C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIDI_Middle_Man.1; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C29F8B3116C27D5200D49492 /* CoreMIDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +47,7 @@
 		C2F172E416C274A800298B7C = {
 			isa = PBXGroup;
 			children = (
+				C29F8B3016C27D5200D49492 /* CoreMIDI.framework */,
 				C2F172EF16C274A800298B7C /* MIDI Middle Man */,
 				C2F172EE16C274A800298B7C /* Products */,
 			);
@@ -216,6 +220,7 @@
 				C2F172F816C274A800298B7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
