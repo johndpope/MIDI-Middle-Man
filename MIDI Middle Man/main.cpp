@@ -11,7 +11,7 @@ int                 gChannel = 0;
 // send MIDI data from port to endpoint
 static void	ReadProcReceive(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
-	if (inputPort != NULL && inputDev != NULL) {
+	if (inputPort != NULL && source != NULL) {
 		MIDIPacket *packet = (MIDIPacket *)pktlist->packet;	// remove const (!)
 		for (unsigned int j = 0; j < pktlist->numPackets; ++j) {
 			for (int i = 0; i < packet->length; ++i) {
@@ -27,9 +27,12 @@ static void	ReadProcReceive(const MIDIPacketList *pktlist, void *refCon, void *c
 		}
         
 		MIDIReceived( inputDev , pktlist ); // fill in
+        MIDISend( inputPort, source , pktlist);
 
 	}
 }
+
+/*
 
 static void	ReadProcSend(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
@@ -52,15 +55,21 @@ static void	ReadProcSend(const MIDIPacketList *pktlist, void *refCon, void *conn
 	}
 }
 
+*/
+
 int main(int argc, const char * argv[])
 {
     OSStatus err = noErr;
     
-    MIDIClientCreate(CFSTR("MIDI Middle Man"), NULL, NULL, &client);
-    MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), ReadProcReceive, NULL, &inputPort);
-    MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
+    err = MIDIClientCreate(CFSTR("MIDI Middle Man"), NULL, NULL, &client);
+    err = MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), ReadProcReceive, NULL, &inputPort);
+    err = MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
 
-    MIDIPortConnectSource(inputPort, source, NULL);
+    inputDev = MIDIGetSource(0);
+
+    err = MIDIPortConnectSource( inputPort, source, NULL);
+    
+
 
     // print the name, manufacturer and model for all connected devices
 	CFStringRef pname, pmanuf, pmodel;
@@ -100,6 +109,8 @@ int main(int argc, const char * argv[])
         printf("%i: %s\n", ppp, sourceNameC);
     }
     
+    /*
+    
     // print out list of destinations
     CFStringRef destinationName;
     char destinationNameC[50];
@@ -114,7 +125,7 @@ int main(int argc, const char * argv[])
     }
     //
     
-    
+    */
     
     
     CFRunLoopRun();
