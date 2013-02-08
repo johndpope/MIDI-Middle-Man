@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C269B9ED16C501060006BA03 /* CoreMIDIServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C269B9EC16C501060006BA03 /* CoreMIDIServer.framework */; };
+		C269B9EF16C504AD0006BA03 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C269B9EE16C504AD0006BA03 /* CoreFoundation.framework */; };
 		C29F8B3116C27D5200D49492 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F8B3016C27D5200D49492 /* CoreMIDI.framework */; };
 		C2F172F116C274A800298B7C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2F172F016C274A800298B7C /* main.cpp */; };
 		C2F172F316C274A800298B7C /* MIDI_Middle_Man.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */; };
@@ -26,9 +28,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C216F38616C5239800F6DC32 /* Echo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Echo.cpp; sourceTree = "<group>"; };
+		C269B9EC16C501060006BA03 /* CoreMIDIServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDIServer.framework; path = ../../../../System/Library/Frameworks/CoreMIDIServer.framework; sourceTree = "<group>"; };
+		C269B9EE16C504AD0006BA03 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		C29F8B3016C27D5200D49492 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		C2F172ED16C274A800298B7C /* MIDI Middle Man */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "MIDI Middle Man"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2F172F016C274A800298B7C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C2F172F016C274A800298B7C /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = main.cpp; sourceTree = "<group>"; };
 		C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIDI_Middle_Man.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C269B9EF16C504AD0006BA03 /* CoreFoundation.framework in Frameworks */,
+				C269B9ED16C501060006BA03 /* CoreMIDIServer.framework in Frameworks */,
 				C29F8B3116C27D5200D49492 /* CoreMIDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,9 +54,12 @@
 		C2F172E416C274A800298B7C = {
 			isa = PBXGroup;
 			children = (
+				C269B9EE16C504AD0006BA03 /* CoreFoundation.framework */,
+				C269B9EC16C501060006BA03 /* CoreMIDIServer.framework */,
 				C29F8B3016C27D5200D49492 /* CoreMIDI.framework */,
 				C2F172EF16C274A800298B7C /* MIDI Middle Man */,
 				C2F172EE16C274A800298B7C /* Products */,
+				C216F38616C5239800F6DC32 /* Echo.cpp */,
 			);
 			sourceTree = "<group>";
 		};
