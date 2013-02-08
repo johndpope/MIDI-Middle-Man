@@ -56,9 +56,12 @@ int main(int argc, const char * argv[])
 {
     OSStatus err = noErr;
     
-    
-       
-    //
+    MIDIClientCreate(CFSTR("MIDI Middle Man"), NULL, NULL, &client);
+    MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), ReadProcReceive, NULL, &inputPort);
+    MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
+
+    MIDIPortConnectSource(inputPort, source, NULL);
+
     // print the name, manufacturer and model for all connected devices
 	CFStringRef pname, pmanuf, pmodel;
 	char name[64], manuf[64], model[64];
