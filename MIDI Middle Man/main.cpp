@@ -2,15 +2,16 @@
 #include <CoreFoundation/CFRunLoop.h>
 #include <stdio.h>
 
-MIDIPortRef		gOutPort = NULL;
-MIDIEndpointRef	gDest = NULL;
-int				gChannel = 0;
+// globals
+MIDIEndpointRef     inputDev, source;
+MIDIClientRef       client;
+MIDIPortRef         inputPort;
+int                 gChannel = 0;
 
-
-// Send MIDI data from port to endpoint
-static void	MyReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
+// send MIDI data from port to endpoint
+static void	ReadProcReceive(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
-	if (gOutPort != NULL && gDest != NULL) {
+	if (inputPort != NULL && inputDev != NULL) {
 		MIDIPacket *packet = (MIDIPacket *)pktlist->packet;	// remove const (!)
 		for (unsigned int j = 0; j < pktlist->numPackets; ++j) {
 			for (int i = 0; i < packet->length; ++i) {
@@ -25,8 +26,29 @@ static void	MyReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRe
 			packet = MIDIPacketNext(packet);
 		}
         
-		MIDISend(gOutPort, gDest, pktlist);
+		MIDIReceived( inputDev , pktlist ); // fill in
 
+	}
+}
+
+static void	ReadProcSend(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
+{
+	if (inputPort != NULL && source != NULL) { // adjust params
+		MIDIPacket *packet = (MIDIPacket *)pktlist->packet;	// remove const (!)
+		for (unsigned int j = 0; j < pktlist->numPackets; ++j) {
+			for (int i = 0; i < packet->length; ++i) {
+                //				printf("%02X ", packet->data[i]);
+                
+				// rechannelize status bytes
+				if (packet->data[i] >= 0x80 && packet->data[i] < 0xF0)
+					packet->data[i] = (packet->data[i] & 0xF0) | gChannel;
+			}
+            
+            //			printf("\n");
+			packet = MIDIPacketNext(packet);
+		}
+        
+        MIDISend( inputPort, source , pktlist);
 	}
 }
 
@@ -34,27 +56,7 @@ int main(int argc, const char * argv[])
 {
     OSStatus err = noErr;
     
-    // create client
-	MIDIClientRef client = NULL;
-	err = MIDIClientCreate(CFSTR("MIDI Middle Man"), NULL, NULL, &client);
-	
-    // create ports
-	MIDIPortRef inPort = NULL;
-	err = MIDIInputPortCreate(client, CFSTR("MIDI Middle Man - Input"), MyReadProc, NULL, &inPort);
-	err = MIDIOutputPortCreate(client, CFSTR("MIDI Middle Man - Output"), &gOutPort);
-        
-    // create source and destination
-    MIDIEndpointRef myDestination = NULL;
-    err = MIDISourceCreate(client, CFSTR("MIDI Middle Man - Output"), &gDest);
-    err = MIDIDestinationCreate(client, CFSTR("MIDI Middle Man - Input"), MyReadProc, NULL, &myDestination);
     
-    // MIDIReceived(&gDest, pktlist);
-    
-    // connect source to input port
-    gDest = MIDIGetDestination(0);
-    myDestination = MIDIGetSource(0); // Put source number in here
-    err = MIDIPortConnectSource(inPort, myDestination, NULL);
-    err = MIDIPortConnectSource(gOutPort, gDest, NULL);
        
     //
     // print the name, manufacturer and model for all connected devices
