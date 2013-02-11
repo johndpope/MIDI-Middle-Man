@@ -3,7 +3,7 @@
 // #include <CoreMIDI/CoreMIDI.h>
 #include <stdio.h>
 
-#define DESIRED_SOURCE_NAME "Launchpad S"
+#define DESIRED_SOURCE_NAME "launchpad S"
 
 // globals
 MIDIEndpointRef     source;
@@ -49,6 +49,7 @@ int main(int argc, const char * argv[])
     
     // create MIDI source - where applications pull MIDI from client
     MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
+    
 
     // Connect source with chosen name
     ItemCount sources = MIDIGetNumberOfSources();
@@ -68,10 +69,6 @@ int main(int argc, const char * argv[])
             inputDev = endpoint;
             MIDIPortConnectSource( inputPort, inputDev, NULL);
 
-        }
-        else
-        {
-            
         };
 
     }    
@@ -107,35 +104,7 @@ int main(int argc, const char * argv[])
     */
     
     
-    // print out list of sources
-    char sourceNameC[50];
-    printf("\nNumber of sources: %li\n", sources);
-    if (sources)
-    {
-        for (int ppp = 0; ppp < sources; ++ppp)
-        {
-        MIDIEndpointRef endpoint = MIDIGetSource(ppp);
-        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName);
-        CFStringGetCString(sourceName, sourceNameC, sizeof(sourceNameC), 0);
-        printf("%i: %s\n", ppp, sourceNameC);
-        }
-    };
-    
-    
-    // print out list of destinations
-    CFStringRef destinationName;
-    char destinationNameC[50];
-    ItemCount destinations = MIDIGetNumberOfDestinations();
-    printf("\nNumber of destinations: %li\n", destinations);
-    if (destinations)
-    {
-        for (int ppp = 0; ppp < destinations; ++ppp) {
-        MIDIEndpointRef endpoint = MIDIGetDestination(ppp);
-        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &destinationName);
-        CFStringGetCString(destinationName, destinationNameC, sizeof(destinationNameC), 0);
-        printf("%i: %s\n", ppp, destinationNameC);
-        }
-    };
+   
     
     CFRunLoopRun();
 	// run until aborted with control-C
