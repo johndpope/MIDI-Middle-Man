@@ -9,6 +9,7 @@
 MIDIEndpointRef     source, destination;
 MIDIEndpointRef     inputDev, outputDev;
 MIDIPortRef         inputPort, outputPort;
+ItemCount           gSources, gDestinations;
 
 
 // send MIDI data from port to endpoint
@@ -28,7 +29,7 @@ static void	ReadProc2(const MIDIPacketList *pktlist, void *refCon, void *connRef
     }
 }
 
-void ConnectInputsandOutputs()
+void ConnectInputs()
 {
     
     // connect source with chosen name
@@ -36,8 +37,11 @@ void ConnectInputsandOutputs()
     CFStringRef sourceName;
     CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
     CFComparisonResult comparisonResult;
-    for (int nnn = 0; nnn < sources; ++nnn) {
+    for (int nnn = 0; nnn < sources; ++nnn)
+    {
         MIDIEndpointRef endpoint = MIDIGetSource(nnn);
+        
+        // get name of source
         MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName);
         
         comparisonResult = CFStringCompare(sourceName, desiredSourceName, kCFCompareCaseInsensitive);
@@ -51,12 +55,18 @@ void ConnectInputsandOutputs()
         };
         
     }
-    
+}
+
+
+void ConnectOutputs()
+{
     // connect destination
     ItemCount destinations = MIDIGetNumberOfDestinations();
     CFStringRef destinationName;
     CFStringRef desiredDestinationName = CFSTR(DESIRED_DESTINATION_NAME);
-    for (int nnn = 0; nnn < destinations; ++nnn) {
+    CFComparisonResult comparisonResult;
+    for (int nnn = 0; nnn < destinations; ++nnn)
+    {
         MIDIEndpointRef endpoint = MIDIGetDestination(nnn);
         MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &destinationName);
         
@@ -71,9 +81,51 @@ void ConnectInputsandOutputs()
         };
         
     }
+}
+
+bool HaveSourcesChanged()
+{
+    ItemCount sources = MIDIGetNumberOfSources();
     
+    if ( sources - gSources != 0 )
+    {
+        gSources = sources;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
     
 }
+
+bool HaveDestinationsChanged()
+{
+    ItemCount destinations = MIDIGetNumberOfDestinations();
+    
+    if ( destinations - gDestinations != 0 )
+    {
+        gDestinations = destinations;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+void NotifyProc (const MIDINotification *message, void *refCon)
+{
+
+    if ( HaveSourcesChanged() || HaveDestinationsChanged())
+    {
+        ConnectInputs();
+        ConnectOutputs();
+    }
+    
+}
+
 
 
 
@@ -83,7 +135,7 @@ int main(int argc, const char * argv[])
         
     // create MIDI client
     MIDIClientRef       client;
-    MIDIClientCreate(CFSTR("MIDI Middle Man"), NULL, NULL, &client);
+    MIDIClientCreate(CFSTR("MIDI Middle Man"), NotifyProc, NULL, &client);
     
     // create MIDI input port to receive MIDI from device
     MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), ReadProc, NULL , &inputPort);
@@ -93,12 +145,14 @@ int main(int argc, const char * argv[])
     MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
     MIDIDestinationCreate(client, CFSTR("MIDI Middle Man"), ReadProc2, NULL, &destination);
         
-    bool running = true;
-    do
-    {
-    ConnectInputsandOutputs();
-        sleep(5);
-    } while (running);
+    gSources = MIDIGetNumberOfSources();
+    gDestinations = MIDIGetNumberOfDestinations();
+    
+    ConnectInputs();
+    ConnectOutputs();
+     
+    CFRunLoopRun();
+
     
     /*
 
@@ -128,7 +182,6 @@ int main(int argc, const char * argv[])
     
     */
     
-    CFRunLoopRun();
 	// run until aborted with control-C
     
     
