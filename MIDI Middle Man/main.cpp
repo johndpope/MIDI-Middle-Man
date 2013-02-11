@@ -1,17 +1,18 @@
 #include <CoreMIDI/MIDIServices.h>
 #include <CoreFoundation/CFRunLoop.h>
+#include <CoreMIDI/CoreMIDI.h>
 #include <stdio.h>
 
 // globals
-MIDIEndpointRef     inputDev, source;
-MIDIClientRef       client;
-MIDIPortRef         inputPort;
+MIDIEndpointRef     source;
+MIDIPortRef         outputPort;
 int                 gChannel = 0;
+MIDIEndpointRef     inputDev;
 
 // send MIDI data from port to endpoint
-static void	ReadProcReceive(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
+static void	ReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
-	if (inputPort != NULL && source != NULL) {
+	if (outputPort != NULL && source != NULL) {
 		MIDIPacket *packet = (MIDIPacket *)pktlist->packet;	// remove const (!)
 		for (unsigned int j = 0; j < pktlist->numPackets; ++j) {
 			for (int i = 0; i < packet->length; ++i) {
@@ -26,8 +27,8 @@ static void	ReadProcReceive(const MIDIPacketList *pktlist, void *refCon, void *c
 			packet = MIDIPacketNext(packet);
 		}
         
-		MIDIReceived( inputDev , pktlist ); // fill in
-        MIDISend( inputPort, source , pktlist);
+        // MIDISend( outputPort, source , pktlist);
+        MIDIReceived(source, pktlist);
 
 	}
 }
@@ -60,14 +61,26 @@ static void	ReadProcSend(const MIDIPacketList *pktlist, void *refCon, void *conn
 int main(int argc, const char * argv[])
 {
     OSStatus err = noErr;
+        
+    // create MIDI client
+    MIDIClientRef       client;
+    MIDIClientCreate(CFSTR("MIDI Middle Man"), NULL, NULL, &client);
     
-    err = MIDIClientCreate(CFSTR("MIDI Middle Man"), NULL, NULL, &client);
-    err = MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), ReadProcReceive, NULL, &inputPort);
-    err = MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
+    // create MIDI input port to receive MIDI from device
+    MIDIPortRef         inputPort;
+    MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), ReadProc, NULL, &inputPort);
+    MIDIOutputPortCreate(client, CFSTR("MIDI Middle Man"), &outputPort);
+    
+    // create MIDI source - where applications pull MIDI from client
+    MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
 
+    // connect
+    
     inputDev = MIDIGetSource(0);
 
-    err = MIDIPortConnectSource( inputPort, source, NULL);
+    err = MIDIPortConnectSource( inputPort, inputDev, NULL);
+    
+    
     
 
 
@@ -110,7 +123,7 @@ int main(int argc, const char * argv[])
     }
     
     /*
-    
+     
     // print out list of destinations
     CFStringRef destinationName;
     char destinationNameC[50];
@@ -124,8 +137,10 @@ int main(int argc, const char * argv[])
         printf("%i: %s\n", ppp, destinationNameC);
     }
     //
+     
+     */
     
-    */
+    
     
     
     CFRunLoopRun();
