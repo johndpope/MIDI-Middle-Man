@@ -5,7 +5,6 @@
 #define DESIRED_SOURCE_NAME "launchpad s"
 #define DESIRED_DESTINATION_NAME "launchpad s"
 
-// globals
 MIDIEndpointRef     source, destination;
 MIDIEndpointRef     inputDev, outputDev;
 MIDIPortRef         inputPort, outputPort;
@@ -103,7 +102,7 @@ bool HaveDestinationsChanged()
 {
     ItemCount destinations = MIDIGetNumberOfDestinations();
     
-    if ( destinations - gDestinations != 0 )
+    if ( (destinations - gDestinations) != 0 )
     {
         gDestinations = destinations;
         return true;
