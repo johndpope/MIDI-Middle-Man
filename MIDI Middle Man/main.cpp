@@ -1,14 +1,12 @@
 #include <CoreMIDI/MIDIServices.h>
 #include <CoreFoundation/CFRunLoop.h>
-// #include <CoreMIDI/CoreMIDI.h>
 #include <stdio.h>
 
-#define DESIRED_SOURCE_NAME "launchpad S"
+#define DESIRED_SOURCE_NAME "launchpad s"
 #define DESIRED_DESTINATION_NAME "launchpad s"
 
 // globals
 MIDIEndpointRef     source, destination;
-int                 gChannel = 0;
 MIDIEndpointRef     inputDev, outputDev;
 MIDIPortRef         inputPort, outputPort;
 
@@ -16,30 +14,10 @@ MIDIPortRef         inputPort, outputPort;
 // send MIDI data from port to endpoint
 static void	ReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
-	if (inputPort != NULL && source != NULL) {
-		 /*
-        
-        MIDIPacket *packet = (MIDIPacket *)pktlist->packet;	// remove const (!)
-		
-       
-        for (unsigned int j = 0; j < pktlist->numPackets; ++j) {
-			for (int i = 0; i < packet->length; ++i) {
-                //				printf("%02X ", packet->data[i]);
-                
-				// rechannelize status bytes
-				if (packet->data[i] >= 0x80 && packet->data[i] < 0xF0)
-					packet->data[i] = (packet->data[i] & 0xF0) | gChannel;
-			}
-            
-            //			printf("\n");
-			packet = MIDIPacketNext(packet);
-		}
-         */
-        
-        // MIDISend( outputPort, source , pktlist);
-        MIDIReceived(source, pktlist);
-
-	}
+	if (inputPort != NULL && source != NULL)
+    {
+	MIDIReceived(source, pktlist);
+    }
 }
 
 static void	ReadProc2(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
@@ -71,12 +49,11 @@ int main(int argc, const char * argv[])
 
     // Connect source with chosen name
     ItemCount sources = MIDIGetNumberOfSources();
-    MIDIEndpointRef endpoint;
     CFStringRef sourceName;
     CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
     CFComparisonResult comparisonResult;
     for (int nnn = 0; nnn < sources; ++nnn) {
-        endpoint = MIDIGetSource(nnn);
+        MIDIEndpointRef endpoint = MIDIGetSource(nnn);
         MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName);
         
         comparisonResult = CFStringCompare(sourceName, desiredSourceName, kCFCompareCaseInsensitive);
@@ -96,7 +73,7 @@ int main(int argc, const char * argv[])
     CFStringRef destinationName;
     CFStringRef desiredDestinationName = CFSTR(DESIRED_DESTINATION_NAME);
     for (int nnn = 0; nnn < destinations; ++nnn) {
-        endpoint = MIDIGetDestination(nnn);
+        MIDIEndpointRef endpoint = MIDIGetDestination(nnn);
         MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &destinationName);
         
         comparisonResult = CFStringCompare(destinationName, desiredDestinationName, kCFCompareCaseInsensitive);
