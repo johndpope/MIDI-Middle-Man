@@ -4,19 +4,25 @@
 #include <stdio.h>
 
 #define DESIRED_SOURCE_NAME "launchpad S"
+#define DESIRED_DESTINATION_NAME "launchpad s"
 
 // globals
-MIDIEndpointRef     source;
+MIDIEndpointRef     source, destination;
 int                 gChannel = 0;
-MIDIEndpointRef     inputDev;
-MIDIPortRef         inputPort;
+MIDIEndpointRef     inputDev, outputDev;
+MIDIPortRef         inputPort, outputPort;
+
 
 // send MIDI data from port to endpoint
 static void	ReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
 	if (inputPort != NULL && source != NULL) {
-		MIDIPacket *packet = (MIDIPacket *)pktlist->packet;	// remove const (!)
-		for (unsigned int j = 0; j < pktlist->numPackets; ++j) {
+		 /*
+        
+        MIDIPacket *packet = (MIDIPacket *)pktlist->packet;	// remove const (!)
+		
+       
+        for (unsigned int j = 0; j < pktlist->numPackets; ++j) {
 			for (int i = 0; i < packet->length; ++i) {
                 //				printf("%02X ", packet->data[i]);
                 
@@ -28,12 +34,23 @@ static void	ReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefC
             //			printf("\n");
 			packet = MIDIPacketNext(packet);
 		}
+         */
         
         // MIDISend( outputPort, source , pktlist);
         MIDIReceived(source, pktlist);
 
 	}
 }
+
+static void	ReadProc2(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
+{
+    if (outputPort != NULL && outputDev != NULL)
+    {
+    MIDISend(outputPort, outputDev, pktlist);
+    }
+}
+
+
 
 int main(int argc, const char * argv[])
 {
@@ -44,11 +61,12 @@ int main(int argc, const char * argv[])
     MIDIClientCreate(CFSTR("MIDI Middle Man"), NULL, NULL, &client);
     
     // create MIDI input port to receive MIDI from device
-    MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), ReadProc, NULL, &inputPort);
-    // MIDIOutputPortCreate(client, CFSTR("MIDI Middle Man"), &outputPort);
+    MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), ReadProc, NULL , &inputPort);
+    MIDIOutputPortCreate(client, CFSTR("MIDI Middle Man"), &outputPort);
     
     // create MIDI source - where applications pull MIDI from client
     MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
+    MIDIDestinationCreate(client, CFSTR("MIDI Middle Man"), ReadProc2, NULL, &destination);
     
 
     // Connect source with chosen name
@@ -56,7 +74,7 @@ int main(int argc, const char * argv[])
     MIDIEndpointRef endpoint;
     CFStringRef sourceName;
     CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
-    CFComparisonResult comparisonResult = kCFCompareEqualTo;
+    CFComparisonResult comparisonResult;
     for (int nnn = 0; nnn < sources; ++nnn) {
         endpoint = MIDIGetSource(nnn);
         MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName);
@@ -71,8 +89,26 @@ int main(int argc, const char * argv[])
 
         };
 
-    }    
+    }
     
+    // Connect destination
+    ItemCount destinations = MIDIGetNumberOfDestinations();
+    CFStringRef destinationName;
+    CFStringRef desiredDestinationName = CFSTR(DESIRED_DESTINATION_NAME);
+    for (int nnn = 0; nnn < destinations; ++nnn) {
+        endpoint = MIDIGetDestination(nnn);
+        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &destinationName);
+        
+        comparisonResult = CFStringCompare(destinationName, desiredDestinationName, kCFCompareCaseInsensitive);
+        
+        if (comparisonResult == kCFCompareEqualTo)
+        {
+            
+            outputDev = endpoint;
+            
+        };
+        
+    }
     
 
     /*
