@@ -28,6 +28,53 @@ static void	ReadProc2(const MIDIPacketList *pktlist, void *refCon, void *connRef
     }
 }
 
+void ConnectInputsandOutputs()
+{
+    
+    // connect source with chosen name
+    ItemCount sources = MIDIGetNumberOfSources();
+    CFStringRef sourceName;
+    CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
+    CFComparisonResult comparisonResult;
+    for (int nnn = 0; nnn < sources; ++nnn) {
+        MIDIEndpointRef endpoint = MIDIGetSource(nnn);
+        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName);
+        
+        comparisonResult = CFStringCompare(sourceName, desiredSourceName, kCFCompareCaseInsensitive);
+        
+        if (comparisonResult == kCFCompareEqualTo)
+        {
+            
+            inputDev = endpoint;
+            MIDIPortConnectSource( inputPort, inputDev, NULL);
+            
+        };
+        
+    }
+    
+    // connect destination
+    ItemCount destinations = MIDIGetNumberOfDestinations();
+    CFStringRef destinationName;
+    CFStringRef desiredDestinationName = CFSTR(DESIRED_DESTINATION_NAME);
+    for (int nnn = 0; nnn < destinations; ++nnn) {
+        MIDIEndpointRef endpoint = MIDIGetDestination(nnn);
+        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &destinationName);
+        
+        // compared desired destination to available destination
+        comparisonResult = CFStringCompare(destinationName, desiredDestinationName, kCFCompareCaseInsensitive);
+        
+        if (comparisonResult == kCFCompareEqualTo)
+        {
+            
+            outputDev = endpoint;
+            
+        };
+        
+    }
+    
+    
+}
+
 
 
 int main(int argc, const char * argv[])
@@ -45,49 +92,14 @@ int main(int argc, const char * argv[])
     // create MIDI source - where applications pull MIDI from client
     MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
     MIDIDestinationCreate(client, CFSTR("MIDI Middle Man"), ReadProc2, NULL, &destination);
+        
+    bool running = true;
+    do
+    {
+    ConnectInputsandOutputs();
+        sleep(5);
+    } while (running);
     
-
-    // Connect source with chosen name
-    ItemCount sources = MIDIGetNumberOfSources();
-    CFStringRef sourceName;
-    CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
-    CFComparisonResult comparisonResult;
-    for (int nnn = 0; nnn < sources; ++nnn) {
-        MIDIEndpointRef endpoint = MIDIGetSource(nnn);
-        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName);
-        
-        comparisonResult = CFStringCompare(sourceName, desiredSourceName, kCFCompareCaseInsensitive);
-        
-        if (comparisonResult == kCFCompareEqualTo)
-        {
-            
-            inputDev = endpoint;
-            MIDIPortConnectSource( inputPort, inputDev, NULL);
-
-        };
-
-    }
-    
-    // Connect destination
-    ItemCount destinations = MIDIGetNumberOfDestinations();
-    CFStringRef destinationName;
-    CFStringRef desiredDestinationName = CFSTR(DESIRED_DESTINATION_NAME);
-    for (int nnn = 0; nnn < destinations; ++nnn) {
-        MIDIEndpointRef endpoint = MIDIGetDestination(nnn);
-        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &destinationName);
-        
-        comparisonResult = CFStringCompare(destinationName, desiredDestinationName, kCFCompareCaseInsensitive);
-        
-        if (comparisonResult == kCFCompareEqualTo)
-        {
-            
-            outputDev = endpoint;
-            
-        };
-        
-    }
-    
-
     /*
 
     // print the name, manufacturer and model for all devices
@@ -115,9 +127,6 @@ int main(int argc, const char * argv[])
 	}
     
     */
-    
-    
-   
     
     CFRunLoopRun();
 	// run until aborted with control-C
