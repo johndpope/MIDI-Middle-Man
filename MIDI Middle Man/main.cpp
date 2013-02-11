@@ -3,6 +3,8 @@
 // #include <CoreMIDI/CoreMIDI.h>
 #include <stdio.h>
 
+#define DESIRED_SOURCE_NAME "Launchpad S"
+
 // globals
 MIDIEndpointRef     source;
 int                 gChannel = 0;
@@ -48,12 +50,31 @@ int main(int argc, const char * argv[])
     // create MIDI source - where applications pull MIDI from client
     MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
 
-    
-    // connect external source
-    inputDev = MIDIGetSource(0);
+    // Connect source with chosen name
+    ItemCount sources = MIDIGetNumberOfSources();
+    MIDIEndpointRef endpoint;
+    CFStringRef sourceName;
+    CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
+    CFComparisonResult comparisonResult = kCFCompareEqualTo;
+    for (int nnn = 0; nnn < sources; ++nnn) {
+        endpoint = MIDIGetSource(nnn);
+        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName);
+        
+        comparisonResult = CFStringCompare(sourceName, desiredSourceName, kCFCompareCaseInsensitive);
+        
+        if (comparisonResult == kCFCompareEqualTo)
+        {
+            
+            inputDev = endpoint;
+            MIDIPortConnectSource( inputPort, inputDev, NULL);
 
-    err = MIDIPortConnectSource( inputPort, inputDev, NULL);
-    
+        }
+        else
+        {
+            
+        };
+
+    }    
     
     
 
@@ -84,9 +105,7 @@ int main(int argc, const char * argv[])
     
     
     // print out list of sources
-    CFStringRef sourceName;
     char sourceNameC[50];
-    ItemCount sources = MIDIGetNumberOfSources();
     printf("\nNumber of sources: %i\n", sources);
     if (sources)
     {
