@@ -78,8 +78,9 @@ int main(int argc, const char * argv[])
     
     
 
+    /*
 
-    // print the name, manufacturer and model for all connected devices
+    // print the name, manufacturer and model for all devices
 	CFStringRef pname, pmanuf, pmodel;
 	char name[64], manuf[64], model[64];
     
@@ -103,10 +104,12 @@ int main(int argc, const char * argv[])
         
 	}
     
+    */
+    
     
     // print out list of sources
     char sourceNameC[50];
-    printf("\nNumber of sources: %i\n", sources);
+    printf("\nNumber of sources: %li\n", sources);
     if (sources)
     {
         for (int ppp = 0; ppp < sources; ++ppp)
@@ -123,7 +126,7 @@ int main(int argc, const char * argv[])
     CFStringRef destinationName;
     char destinationNameC[50];
     ItemCount destinations = MIDIGetNumberOfDestinations();
-    printf("\nNumber of destinations: %i\n", destinations);
+    printf("\nNumber of destinations: %li\n", destinations);
     if (destinations)
     {
         for (int ppp = 0; ppp < destinations; ++ppp) {
