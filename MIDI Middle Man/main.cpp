@@ -12,7 +12,7 @@ ItemCount           gSources, gDestinations;
 
 
 // send MIDI data from port to endpoint
-static void	ReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
+static void	InputReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
 	if (inputPort != NULL && source != NULL)
     {
@@ -20,7 +20,7 @@ static void	ReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefC
     }
 }
 
-static void	ReadProc2(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
+static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
     if (outputPort != NULL && outputDev != NULL)
     {
@@ -130,19 +130,19 @@ void NotifyProc (const MIDINotification *message, void *refCon)
 
 int main(int argc, const char * argv[])
 {
-    OSStatus err = noErr;
-        
+
+    
     // create MIDI client
     MIDIClientRef       client;
     MIDIClientCreate(CFSTR("MIDI Middle Man"), NotifyProc, NULL, &client);
     
     // create MIDI input port to receive MIDI from device
-    MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), ReadProc, NULL , &inputPort);
+    MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), InputReadProc, NULL , &inputPort);
     MIDIOutputPortCreate(client, CFSTR("MIDI Middle Man"), &outputPort);
     
     // create MIDI source - where applications pull MIDI from client
     MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
-    MIDIDestinationCreate(client, CFSTR("MIDI Middle Man"), ReadProc2, NULL, &destination);
+    MIDIDestinationCreate(client, CFSTR("MIDI Middle Man"), DestinationReadProc, NULL, &destination);
         
     gSources = MIDIGetNumberOfSources();
     gDestinations = MIDIGetNumberOfDestinations();
