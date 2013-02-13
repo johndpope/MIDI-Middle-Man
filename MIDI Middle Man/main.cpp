@@ -2,8 +2,8 @@
 #include <CoreFoundation/CFRunLoop.h>
 #include <stdio.h>
 
-#define DESIRED_SOURCE_NAME "launchpad s"
-#define DESIRED_DESTINATION_NAME "launchpad s"
+#define DESIRED_SOURCE_NAME "launchkey midi"
+#define DESIRED_DESTINATION_NAME "launchkey midi"
 
 MIDIEndpointRef     source, destination;
 MIDIEndpointRef     inputDev, outputDev;
@@ -11,7 +11,6 @@ MIDIPortRef         inputPort, outputPort;
 ItemCount           gSources, gDestinations;
 
 
-// send MIDI data from port to endpoint
 static void	InputReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
 	if (inputPort != NULL && source != NULL)
@@ -50,6 +49,9 @@ void ConnectInputs()
             
             inputDev = endpoint;
             MIDIPortConnectSource( inputPort, inputDev, NULL);
+            char cSourceName[64];
+            CFStringGetCString(sourceName, cSourceName, sizeof(cSourceName), 0);
+            printf("%s connected to MIDI Middle Man Input\n", cSourceName);
             
         };
         
@@ -76,6 +78,9 @@ void ConnectOutputs()
         {
             
             outputDev = endpoint;
+            char cDestinationName[64];
+            CFStringGetCString(destinationName, cDestinationName, sizeof(cDestinationName), 0);
+            printf("%s connected to MIDI Middle Man Output\n", cDestinationName);
             
         };
         
@@ -130,20 +135,18 @@ void NotifyProc (const MIDINotification *message, void *refCon)
 
 int main(int argc, const char * argv[])
 {
-
-    
     // create MIDI client
     MIDIClientRef       client;
     MIDIClientCreate(CFSTR("MIDI Middle Man"), NotifyProc, NULL, &client);
     
-    // create MIDI input port to receive MIDI from device
+    // create MIDI ports
     MIDIInputPortCreate(client, CFSTR("MIDI Middle Man"), InputReadProc, NULL , &inputPort);
     MIDIOutputPortCreate(client, CFSTR("MIDI Middle Man"), &outputPort);
     
-    // create MIDI source - where applications pull MIDI from client
+    // create MIDI source and destination
     MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
     MIDIDestinationCreate(client, CFSTR("MIDI Middle Man"), DestinationReadProc, NULL, &destination);
-        
+    
     gSources = MIDIGetNumberOfSources();
     gDestinations = MIDIGetNumberOfDestinations();
     
@@ -153,8 +156,8 @@ int main(int argc, const char * argv[])
     CFRunLoopRun();
 
     
-    /*
-
+/*
+    
     // print the name, manufacturer and model for all devices
 	CFStringRef pname, pmanuf, pmodel;
 	char name[64], manuf[64], model[64];
@@ -180,9 +183,6 @@ int main(int argc, const char * argv[])
 	}
     
     */
-    
-	// run until aborted with control-C
-    
     
     return 0;
 }
