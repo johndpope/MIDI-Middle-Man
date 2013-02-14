@@ -1,15 +1,17 @@
 #include <CoreMIDI/MIDIServices.h>
 #include <CoreFoundation/CFRunLoop.h>
 #include <stdio.h>
+#import <Cocoa/Cocoa.h>
+#include <typeinfo>
 
-#define DESIRED_SOURCE_NAME "launchkey midi"
-#define DESIRED_DESTINATION_NAME "launchkey midi"
+#define DESIRED_SOURCE_NAME "Launchkey MIDI"
+#define DESIRED_DESTINATION_NAME "Launchkey MIDI"
 
 MIDIEndpointRef     source, destination;
 MIDIEndpointRef     inputDev, outputDev;
 MIDIPortRef         inputPort, outputPort;
 ItemCount           gSources, gDestinations;
-
+NSMutableArray*     sourceList;
 
 static void	InputReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
@@ -27,9 +29,33 @@ static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, voi
     }
 }
 
-// ScanMIDISources();
+// stores a list of current sources in sourceList and returns the number of sources
+ItemCount AcquireCurrentSources(NSMutableArray* sourceList)
+{
+    ItemCount sources = MIDIGetNumberOfSources();
+    CFStringRef sourceName;
+    
+    for (int nnn = 0; nnn < sources; ++nnn)
+    {
+        
+        MIDIEndpointRef endpoint = MIDIGetSource(nnn);
+        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName);
+        NSString * pNSSourceName = (__bridge  NSString *)sourceName;
+        [sourceList insertObject: pNSSourceName atIndex: nnn];
 
-// bool IsStringInList(NSArray,CFString);
+    }
+    return sources;
+}
+
+// queries whether the desiredSourceName is in the list and returns the index
+// returns NSNotFound if not in list
+NSUInteger FindIndexOfDesiredSource(NSArray * sourceList, CFStringRef desiredSourceName)
+{
+    NSString * pNSDesiredSourceName = (__bridge NSString *) desiredSourceName;
+    
+    return [sourceList indexOfObject:pNSDesiredSourceName];
+    
+}
 
 void ConnectInputs()
 {
@@ -151,42 +177,33 @@ int main(int argc, const char * argv[])
     MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
     MIDIDestinationCreate(client, CFSTR("MIDI Middle Man"), DestinationReadProc, NULL, &destination);
     
+    // create and return an empty array for source list
+    sourceList = [ NSMutableArray array ];
+    
+    
     gSources = MIDIGetNumberOfSources();
     gDestinations = MIDIGetNumberOfDestinations();
     
-    ConnectInputs();
-    ConnectOutputs();
-     
+    // ConnectInputs();
+    //  ConnectOutputs();
+    
+    AcquireCurrentSources(sourceList);
+    CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
+    NSUInteger indexOfDesiredSource = -1;
+    indexOfDesiredSource = FindIndexOfDesiredSource(sourceList, desiredSourceName);
+    if (indexOfDesiredSource == NSNotFound)
+    {
+        NSLog(@"Desired source not connected");
+    }
+    else
+    {
+        NSLog(@"Desired source is at index: %lu", (unsigned long) indexOfDesiredSource);
+        
+    }
+        
     CFRunLoopRun();
 
     
-/*
-    
-    // print the name, manufacturer and model for all devices
-	CFStringRef pname, pmanuf, pmodel;
-	char name[64], manuf[64], model[64];
-    
-    ItemCount n = MIDIGetNumberOfDevices();
-	for (int i = 0; i < n; ++i) {
-		MIDIDeviceRef dev = MIDIGetDevice(i);
-		
-		MIDIObjectGetStringProperty(dev, kMIDIPropertyName, &pname);
-		MIDIObjectGetStringProperty(dev, kMIDIPropertyManufacturer, &pmanuf);
-		MIDIObjectGetStringProperty(dev, kMIDIPropertyModel, &pmodel);
-		
-		CFStringGetCString(pname, name, sizeof(name), 0);
-		CFStringGetCString(pmanuf, manuf, sizeof(manuf), 0);
-		CFStringGetCString(pmodel, model, sizeof(model), 0);
-		CFRelease(pname);
-		CFRelease(pmanuf);
-		CFRelease(pmodel);
-        
-        
-		printf("number=%i name=%s, manuf=%s, model=%s\n", i, name, manuf, model);
-        
-	}
-    
-    */
     
     return 0;
 }
