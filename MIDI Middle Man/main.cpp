@@ -27,6 +27,10 @@ static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, voi
     }
 }
 
+// ScanMIDISources();
+
+// bool IsStringInList(NSArray,CFString);
+
 void ConnectInputs()
 {
     
