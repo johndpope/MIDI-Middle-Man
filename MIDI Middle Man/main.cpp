@@ -11,8 +11,9 @@ MIDIEndpointRef     source, destination;
 MIDIEndpointRef     inputDev, outputDev;
 MIDIPortRef         inputPort, outputPort;
 ItemCount           gSources, gDestinations;
-NSMutableArray*     sourceList;
+NSMutableArray      *sourceList, *destinationList;
 
+// when MIDI present at input port (should be connected to external source), distributes MIDI to source
 static void	InputReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
 	if (inputPort != NULL && source != NULL)
@@ -21,6 +22,7 @@ static void	InputReadProc(const MIDIPacketList *pktlist, void *refCon, void *con
     }
 }
 
+// when MIDI present at destination, distributes MIDI from output port to chosen output devices
 static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
     if (outputPort != NULL && outputDev != NULL)
@@ -30,7 +32,7 @@ static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, voi
 }
 
 // stores a list of current sources in sourceList and returns the number of sources
-ItemCount AcquireCurrentSources(NSMutableArray* sourceList)
+ItemCount ListCurrentSources(NSMutableArray* sourceList)
 {
     ItemCount sources = MIDIGetNumberOfSources();
     CFStringRef sourceName;
@@ -57,47 +59,18 @@ NSUInteger FindIndexOfDesiredSource(NSArray * sourceList, CFStringRef desiredSou
     
 }
 
-void ConnectInputs()
-{
-    
-    // connect source with chosen name
-    ItemCount sources = MIDIGetNumberOfSources();
-    CFStringRef sourceName;
-    CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
-    CFComparisonResult comparisonResult;
-    for (int nnn = 0; nnn < sources; ++nnn)
-    {
-        MIDIEndpointRef endpoint = MIDIGetSource(nnn);
-        
-        // get name of source
-        MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName);
-        
-        comparisonResult = CFStringCompare(sourceName, desiredSourceName, kCFCompareCaseInsensitive);
-        
-        if (comparisonResult == kCFCompareEqualTo)
-        {
-            
-            inputDev = endpoint;
-            MIDIPortConnectSource( inputPort, inputDev, NULL);
-            char cSourceName[64];
-            CFStringGetCString(sourceName, cSourceName, sizeof(cSourceName), 0);
-            printf("%s connected to MIDI Middle Man Input\n", cSourceName);
-            
-        };
-        
-    }
+// connects a source at an index to the inputPort
+void ConnectInputs(NSUInteger indexOfDesiredSource, MIDIEndpointRef inputPort)
+{     
+        MIDIEndpointRef inputDev = MIDIGetSource((int) indexOfDesiredSource); // more elegant cast here?
+        MIDIPortConnectSource(inputPort, inputDev, NULL);
 }
 
+/*
 
 void ConnectOutputs()
 {
-    // connect destination
-    ItemCount destinations = MIDIGetNumberOfDestinations();
-    CFStringRef destinationName;
-    CFStringRef desiredDestinationName = CFSTR(DESIRED_DESTINATION_NAME);
-    CFComparisonResult comparisonResult;
-    for (int nnn = 0; nnn < destinations; ++nnn)
-    {
+
         MIDIEndpointRef endpoint = MIDIGetDestination(nnn);
         MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &destinationName);
         
@@ -116,7 +89,11 @@ void ConnectOutputs()
         
     }
 }
+ 
+*/
 
+
+// returns true if the number of sources have changed
 bool HaveSourcesChanged()
 {
     ItemCount sources = MIDIGetNumberOfSources();
@@ -133,6 +110,7 @@ bool HaveSourcesChanged()
     
 }
 
+// returns true if the number of destinations has changed
 bool HaveDestinationsChanged()
 {
     ItemCount destinations = MIDIGetNumberOfDestinations();
@@ -149,11 +127,13 @@ bool HaveDestinationsChanged()
     
 }
 
+// does something if the number of sources or destinations has changed
 void NotifyProc (const MIDINotification *message, void *refCon)
 {
 
     if ( HaveSourcesChanged() || HaveDestinationsChanged())
     {
+        // something
         ConnectInputs();
         ConnectOutputs();
     }
@@ -177,30 +157,23 @@ int main(int argc, const char * argv[])
     MIDISourceCreate(client, CFSTR("MIDI Middle Man"), &source);
     MIDIDestinationCreate(client, CFSTR("MIDI Middle Man"), DestinationReadProc, NULL, &destination);
     
-    // create and return an empty array for source list
+    // create an empty array for source list
     sourceList = [ NSMutableArray array ];
+    destinationList = [ NSMutableArray array];
     
-    
+    // get global number of sources and destinations
     gSources = MIDIGetNumberOfSources();
     gDestinations = MIDIGetNumberOfDestinations();
     
     // ConnectInputs();
     //  ConnectOutputs();
     
-    AcquireCurrentSources(sourceList);
     CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
     NSUInteger indexOfDesiredSource = -1;
+    ListCurrentSources(sourceList);
     indexOfDesiredSource = FindIndexOfDesiredSource(sourceList, desiredSourceName);
-    if (indexOfDesiredSource == NSNotFound)
-    {
-        NSLog(@"Desired source not connected");
-    }
-    else
-    {
-        NSLog(@"Desired source is at index: %lu", (unsigned long) indexOfDesiredSource);
-        
-    }
-        
+    
+    
     CFRunLoopRun();
 
     
