@@ -2,12 +2,14 @@
 #include <CoreFoundation/CFRunLoop.h>
 #include <stdio.h>
 #import <Cocoa/Cocoa.h>
-#include "MIDIMiddleMan.h"
 
+#include "MIDIMiddleMan.hpp"
 
 #define DESIRED_SOURCE_NAME "Launchpad S"
 #define DESIRED_DESTINATION_NAME "Launchpad S"
 
+extern ItemCount           gSources, gDestinations;
+extern NSMutableArray      *sourceList, *destinationList;
 
 int main(int argc, const char * argv[])
 {
@@ -15,7 +17,6 @@ int main(int argc, const char * argv[])
     MIDIPortRef             inputPort, outputPort;
     MIDIEndpointRef         mySource, myDestination;
     OutputPortDevicePair    myOutputPortDevicePair;
-
     
     // create MIDI client
     MIDIClientCreate(CFSTR("MIDI Middle Man"), NotifyProc, NULL, &client);

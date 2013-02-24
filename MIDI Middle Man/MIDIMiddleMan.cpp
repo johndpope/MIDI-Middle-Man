@@ -6,24 +6,14 @@
 //  Copyright (c) 2013 Focusrite Audio Engineering Ltd. All rights reserved.
 //
 
-#include "MIDIMiddleMan.h"
-#include <CoreMIDI/MIDIServices.h>
-#include <CoreFoundation/CFRunLoop.h>
-#include <stdio.h>
-#import <Cocoa/Cocoa.h>
+#include "MIDIMiddleMan.hpp"
 
 ItemCount           gSources, gDestinations;
 NSMutableArray      *sourceList, *destinationList;
 
-struct OutputPortDevicePair
-{
-    MIDIPortRef outputPort;
-    MIDIEndpointRef outputDevice;
-};
-
 // when MIDI present at input port (should be connected to external source), distributes MIDI to source
 // should be passed source from MIDIInputPortCreate
-static void	InputReadProc(const MIDIPacketList *pktlist, void * refCon, void * connRefCon)
+void	InputReadProc(const MIDIPacketList *pktlist, void * refCon, void * connRefCon)
 {
     MIDIEndpointRef *mySource = (MIDIEndpointRef *) refCon;
     
@@ -31,7 +21,7 @@ static void	InputReadProc(const MIDIPacketList *pktlist, void * refCon, void * c
 }
 
 // when MIDI present at destination, distributes MIDI from output port to chosen output devices
-static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
+void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)
 {
     
     

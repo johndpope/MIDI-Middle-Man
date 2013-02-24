@@ -29,8 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		74ABBB8716DA3FB700650C7F /* MIDIMiddleMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MIDIMiddleMan.cpp; sourceTree = "<group>"; };
-		74ABBB8816DA3FB700650C7F /* MIDIMiddleMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDIMiddleMan.h; sourceTree = "<group>"; };
+		74ABBB8716DA3FB700650C7F /* MIDIMiddleMan.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = MIDIMiddleMan.cpp; sourceTree = "<group>"; };
+		74ABBB8816DA3FB700650C7F /* MIDIMiddleMan.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = MIDIMiddleMan.hpp; sourceTree = "<group>"; };
 		C216F38616C5239800F6DC32 /* Echo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Echo.cpp; sourceTree = "<group>"; };
 		C269B9EC16C501060006BA03 /* CoreMIDIServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDIServer.framework; path = ../../../../System/Library/Frameworks/CoreMIDIServer.framework; sourceTree = "<group>"; };
 		C269B9EE16C504AD0006BA03 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -80,7 +80,7 @@
 				C2F172F016C274A800298B7C /* main.cpp */,
 				C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */,
 				74ABBB8716DA3FB700650C7F /* MIDIMiddleMan.cpp */,
-				74ABBB8816DA3FB700650C7F /* MIDIMiddleMan.h */,
+				74ABBB8816DA3FB700650C7F /* MIDIMiddleMan.hpp */,
 			);
 			path = "MIDI Middle Man";
 			sourceTree = "<group>";
@@ -136,8 +136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F172F116C274A800298B7C /* main.cpp in Sources */,
 				74ABBB8916DA3FB700650C7F /* MIDIMiddleMan.cpp in Sources */,
+				C2F172F116C274A800298B7C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
