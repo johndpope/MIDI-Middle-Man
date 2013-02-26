@@ -170,7 +170,6 @@ void NotifyProc (const MIDINotification *message, void *refCon)
     
     if ( HaveSourcesChanged() || HaveDestinationsChanged())
     {
-        // something
         ListCurrentSources(sourceList);
         
         ListCurrentDestinations(destinationList);
