@@ -16,7 +16,7 @@ int main(int argc, const char * argv[])
     CMMMConnection *secondMMM = [[CMMMConnection alloc] init];
     
     [firstMMM CreateMMMConnection:1 ToSource:@"Port 1" andDestination:@"Port 1"];
-    [secondMMM CreateMMMConnection:2 ToSource:@"Port 2" andDestination:@"Port 2"];
+    [secondMMM CreateMMMConnection:2 ToSource:@"Hi" andDestination:@"Hi"];
     
     CFRunLoopRun();
     
