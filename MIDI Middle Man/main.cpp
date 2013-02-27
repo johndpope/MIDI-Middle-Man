@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include "MIDI Middle Man.hpp"
 
+#import "CMMMConnection.h"
+
 #define DESIRED_SOURCE_NAME "Launchpad S"
 #define DESIRED_DESTINATION_NAME "Launchpad S"
 
+<<<<<<< HEAD
 int main(int argc, const char * argv[])
 {
     MIDIClientRef           client;
@@ -43,11 +46,19 @@ int main(int argc, const char * argv[])
     ListCurrentDestinations(destinationList);
     indexOfDesiredDestination = FindIndexOfDesiredDestination(destinationList, desiredDestinationName);
     ConnectOutputs(indexOfDesiredDestination, &myOutputPortDevicePair);
+=======
+
+int main(int argc, const char * argv[])
+{
     
+    CMMMConnection *firstMMM = [[CMMMConnection alloc] init];
+    CMMMConnection *secondMMM = [[CMMMConnection alloc] init];
+>>>>>>> classReorganise
+    
+    [firstMMM CreateMMMConnection:1 ToSource:@"Port 1" andDestination:@"Port 1"];
+    [secondMMM CreateMMMConnection:2 ToSource:@"Hi" andDestination:@"Hi"];
     
     CFRunLoopRun();
-
-    
     
     return 0;
 }
