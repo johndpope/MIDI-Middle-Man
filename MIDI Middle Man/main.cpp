@@ -12,12 +12,13 @@
 int main(int argc, const char * argv[])
 {
     
-    CMMMConnection *firstMMM;
-    [firstMMM CreateMMMConnection:1 ToSource:@"Launchpad S" andDestination:@"Launchpad S"];
+    CMMMConnection *firstMMM = [[CMMMConnection alloc] init];
+    CMMMConnection *secondMMM = [[CMMMConnection alloc] init];
+    
+    [firstMMM CreateMMMConnection:1 ToSource:@"Port 1" andDestination:@"Port 1"];
+    [secondMMM CreateMMMConnection:2 ToSource:@"Port 2" andDestination:@"Port 2"];
     
     CFRunLoopRun();
-
-    
     
     return 0;
 }

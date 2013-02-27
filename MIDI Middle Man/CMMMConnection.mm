@@ -51,14 +51,14 @@ static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, voi
 
 static void NotifyProc (const MIDINotification *message, void *refCon)
 {
-    CMMMConnection *thisOne = (__bridge CMMMConnection *) refCon;
-    
-    if ( [thisOne HaveSourcesChanged] || [thisOne HaveDestinationsChanged])
+    /*
+    if ( [self HaveSourcesChanged] || [self HaveDestinationsChanged])
     {
-        [thisOne RefreshInput];
+        [self RefreshInput];
         
-        [thisOne RefreshOutput];
+        [self RefreshOutput];
     }
+    */
     
 }
 
@@ -96,7 +96,7 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
 }
 
 // stores a list of current sources in sourceList and returns the number of sources
-ItemCount ListCurrentSources(NSMutableArray* sourceList)
+- (ItemCount) ListCurrentSources
 {
     ItemCount sources = MIDIGetNumberOfSources(); // count the number of sources
     CFStringRef sourceName;
@@ -110,12 +110,12 @@ ItemCount ListCurrentSources(NSMutableArray* sourceList)
         [sourceList insertObject: pNSSourceName atIndex: nnn];
         
     }
-    printf("Created list of sources\n");
+    // printf("Created list of sources\n");
     return sources;
 }
 
 // stores the current available destinations in destinationList array
-ItemCount ListCurrentDestinations(NSMutableArray* destinationList)
+- (ItemCount) ListCurrentDestinations
 {
     ItemCount destinations = MIDIGetNumberOfDestinations();
     CFStringRef destinationName;
@@ -129,27 +129,27 @@ ItemCount ListCurrentDestinations(NSMutableArray* destinationList)
         [destinationList insertObject: pNSDestinationName atIndex: nnn];
         
     }
-    printf("Created list of destinations\n");
+    // printf("Created list of destinations\n");
     return destinations;
 }
 
 // queries whether the desiredSourceName is in the list and returns the index
 // returns NSNotFound if not in list
-NSUInteger FindIndexOfDesiredSource(NSArray * sourceList, CFStringRef desiredSourceName)
+- (NSUInteger) FindIndexOfDesiredSource
 {
-    NSString * pNSDesiredSourceName = (__bridge NSString *) desiredSourceName;
+    NSString * sourceName = (__bridge NSString *) desiredSourceName;
     
-    return [sourceList indexOfObject:pNSDesiredSourceName];
+    return [sourceList indexOfObject:sourceName];
     
 }
 
 // queries whether the desiredDestinationName is in the list and returns the index
 // returns NSNotFound if not in list
-NSUInteger FindIndexOfDesiredDestination(NSArray * destinationList, CFStringRef desiredDestinationName)
+- (NSUInteger) FindIndexOfDesiredDestination
 {
-    NSString * pNSDesiredDestinationName = (__bridge NSString *) desiredDestinationName;
+    NSString * destName = (__bridge NSString *) desiredDestinationName;
     
-    return [destinationList indexOfObject:pNSDesiredDestinationName];
+    return [destinationList indexOfObject:destName];
 }
 
 // connects a source at an index to the inputPort
@@ -184,18 +184,18 @@ NSUInteger FindIndexOfDesiredDestination(NSArray * destinationList, CFStringRef 
 
 - (void) RefreshInput
 {
-    NSUInteger indexOfDesiredSource = -1;
-    gSources = ListCurrentSources(sourceList);
-    indexOfDesiredSource = FindIndexOfDesiredSource(sourceList, desiredSourceName);
+    NSUInteger indexOfDesiredSource = NSNotFound;
+    gSources = [self ListCurrentSources];
+    indexOfDesiredSource = [self FindIndexOfDesiredSource];
     [self ConnectInputs:indexOfDesiredSource];
 }
 
 
 - (void) RefreshOutput
 {
-    NSUInteger indexOfDesiredDestination = -1;
-    self->gDestinations = ListCurrentDestinations(destinationList);
-    indexOfDesiredDestination = FindIndexOfDesiredDestination(destinationList, desiredDestinationName);
+    NSUInteger indexOfDesiredDestination = NSNotFound;
+    gDestinations = [self ListCurrentDestinations];
+    indexOfDesiredDestination = [self FindIndexOfDesiredDestination];
     [self ConnectOutputs:indexOfDesiredDestination];
 }
 
@@ -204,11 +204,16 @@ NSUInteger FindIndexOfDesiredDestination(NSArray * destinationList, CFStringRef 
     instanceNumber = number;
     instanceName = CFStringCreateWithFormat(NULL, NULL, CFSTR("MIDI Middle Man %i"), self.instanceNumber);
     
-    desiredDestinationName = sName;
-    desiredDestinationName = dName;
+    desiredSourceName = (__bridge CFStringRef) sName;
+    desiredDestinationName = (__bridge CFStringRef) dName;
     
+    isSourceConnected = false;
+    isDestinationConnected = false;
     
-    void* classPointer = (void *)&self;
+    sourceList = [NSMutableArray array];
+    destinationList = [NSMutableArray array];
+    
+    void* classPointer = (__bridge void *)self;
     
     // create client
     MIDIClientCreate(
@@ -245,14 +250,9 @@ NSUInteger FindIndexOfDesiredDestination(NSArray * destinationList, CFStringRef 
                           classPointer,
                           &(destination));
 
-
-
-    // check if desired source is connected, connect up
     [self RefreshInput];
     [self RefreshOutput];
-    
-    // check if desired destination is connected, connect up
-    
+        
     return self;
 }
 

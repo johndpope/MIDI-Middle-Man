@@ -14,7 +14,7 @@
 @interface CMMMConnection : NSObject
 {
     MIDIClientRef     client;
-    CFStringRef       clientName;
+
     MIDIPortRef       inputPort, outputPort;
     MIDIEndpointRef   source, destination;
     MIDIEndpointRef   inputDevice, outputDevice;
