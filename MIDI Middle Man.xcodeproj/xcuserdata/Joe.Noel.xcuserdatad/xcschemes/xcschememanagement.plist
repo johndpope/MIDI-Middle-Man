@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>MIDIMiddleManTest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>C2A0CCE716DE12900035FB71</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C2F172EC16C274A800298B7C</key>
 		<dict>
 			<key>primary</key>

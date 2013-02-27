@@ -25,7 +25,6 @@ struct OutputPortDevicePair
     MIDIEndpointRef outputDevice;
 };
 
-
 // stores a list of current sources in sourceList and returns the number of sources
 ItemCount ListCurrentSources(NSMutableArray* sourceList);
 

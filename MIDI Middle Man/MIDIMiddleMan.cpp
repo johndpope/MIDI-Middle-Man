@@ -11,6 +11,8 @@
 ItemCount           gSources, gDestinations;
 NSMutableArray      *sourceList, *destinationList;
 
+// dummy
+
 // when MIDI present at input port (should be connected to external source), distributes MIDI to source
 // should be passed source from MIDIInputPortCreate
 void	InputReadProc(const MIDIPacketList *pktlist, void * refCon, void * connRefCon)
@@ -48,7 +50,7 @@ ItemCount ListCurrentSources(NSMutableArray* sourceList)
         
         MIDIEndpointRef endpoint = MIDIGetSource(nnn);
         MIDIObjectGetStringProperty( endpoint, kMIDIPropertyName, &sourceName); // get name of endpoint
-        NSString * pNSSourceName = (__bridge  NSString *)sourceName;
+        NSString * pNSSourceName = (__bridge NSString *)sourceName;
         [sourceList insertObject: pNSSourceName atIndex: nnn];
         
     }
@@ -80,9 +82,10 @@ ItemCount ListCurrentDestinations(NSMutableArray* destinationList)
 NSUInteger FindIndexOfDesiredSource(NSArray * sourceList, CFStringRef desiredSourceName)
 {
     NSString * pNSDesiredSourceName = (__bridge NSString *) desiredSourceName;
-    
+    /*
     int indexOfDesiredSource = [sourceList indexOfObject:pNSDesiredSourceName];
     printf("Desired source at index: %i\n", indexOfDesiredSource);
+    */
     
     return [sourceList indexOfObject:pNSDesiredSourceName];
     

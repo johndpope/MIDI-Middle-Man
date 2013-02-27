@@ -11,6 +11,16 @@
 		C269B9ED16C501060006BA03 /* CoreMIDIServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C269B9EC16C501060006BA03 /* CoreMIDIServer.framework */; };
 		C269B9EF16C504AD0006BA03 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C269B9EE16C504AD0006BA03 /* CoreFoundation.framework */; };
 		C29F8B3116C27D5200D49492 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F8B3016C27D5200D49492 /* CoreMIDI.framework */; };
+		C2A0CCEB16DE12900035FB71 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0CCEA16DE12900035FB71 /* SenTestingKit.framework */; };
+		C2A0CCED16DE12900035FB71 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0CCEC16DE12900035FB71 /* Cocoa.framework */; };
+		C2A0CCF716DE12900035FB71 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2A0CCF516DE12900035FB71 /* InfoPlist.strings */; };
+		C2A0CCFA16DE12900035FB71 /* MIDIMiddleManTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A0CCF916DE12900035FB71 /* MIDIMiddleManTest.mm */; };
+		C2A0CCFF16DE1B2F0035FB71 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2F172F016C274A800298B7C /* main.cpp */; };
+		C2A0CD0016DE1B320035FB71 /* MIDIMiddleMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74ABBB8716DA3FB700650C7F /* MIDIMiddleMan.cpp */; };
+		C2A0CD0116DE1B9A0035FB71 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C269B9EE16C504AD0006BA03 /* CoreFoundation.framework */; };
+		C2A0CD0216DE1BA00035FB71 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F8B3016C27D5200D49492 /* CoreMIDI.framework */; };
+		C2A0CD0516DE37100035FB71 /* CMMMConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A0CD0416DE37100035FB71 /* CMMMConnection.mm */; };
+		C2A0CD0616DE37100035FB71 /* CMMMConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A0CD0416DE37100035FB71 /* CMMMConnection.mm */; };
 		C2F172F116C274A800298B7C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2F172F016C274A800298B7C /* main.cpp */; };
 		C2F172F316C274A800298B7C /* MIDI_Middle_Man.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */; };
 /* End PBXBuildFile section */
@@ -35,12 +45,36 @@
 		C269B9EC16C501060006BA03 /* CoreMIDIServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDIServer.framework; path = ../../../../System/Library/Frameworks/CoreMIDIServer.framework; sourceTree = "<group>"; };
 		C269B9EE16C504AD0006BA03 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		C29F8B3016C27D5200D49492 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		C2A0CCE816DE12900035FB71 /* MIDIMiddleManTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIMiddleManTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2A0CCEA16DE12900035FB71 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		C2A0CCEC16DE12900035FB71 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		C2A0CCEF16DE12900035FB71 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		C2A0CCF016DE12900035FB71 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C2A0CCF116DE12900035FB71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C2A0CCF416DE12900035FB71 /* MIDIMiddleManTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MIDIMiddleManTest-Info.plist"; sourceTree = "<group>"; };
+		C2A0CCF616DE12900035FB71 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C2A0CCF816DE12900035FB71 /* MIDIMiddleManTest.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MIDIMiddleManTest.hh; sourceTree = "<group>"; };
+		C2A0CCF916DE12900035FB71 /* MIDIMiddleManTest.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = MIDIMiddleManTest.mm; sourceTree = "<group>"; };
+		C2A0CCFB16DE12900035FB71 /* MIDIMiddleManTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MIDIMiddleManTest-Prefix.pch"; sourceTree = "<group>"; };
+		C2A0CD0316DE37100035FB71 /* CMMMConnection.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = CMMMConnection.h; sourceTree = "<group>"; };
+		C2A0CD0416DE37100035FB71 /* CMMMConnection.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = CMMMConnection.mm; sourceTree = "<group>"; };
 		C2F172ED16C274A800298B7C /* MIDI Middle Man */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "MIDI Middle Man"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F172F016C274A800298B7C /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = main.cpp; sourceTree = "<group>"; };
 		C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIDI_Middle_Man.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C2A0CCE416DE12900035FB71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2A0CD0216DE1BA00035FB71 /* CoreMIDI.framework in Frameworks */,
+				C2A0CD0116DE1B9A0035FB71 /* CoreFoundation.framework in Frameworks */,
+				C2A0CCEB16DE12900035FB71 /* SenTestingKit.framework in Frameworks */,
+				C2A0CCED16DE12900035FB71 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2F172EA16C274A800298B7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -54,6 +88,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2A0CCE916DE12900035FB71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2A0CCEA16DE12900035FB71 /* SenTestingKit.framework */,
+				C2A0CCEC16DE12900035FB71 /* Cocoa.framework */,
+				C2A0CCEE16DE12900035FB71 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C2A0CCEE16DE12900035FB71 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2A0CCEF16DE12900035FB71 /* AppKit.framework */,
+				C2A0CCF016DE12900035FB71 /* CoreData.framework */,
+				C2A0CCF116DE12900035FB71 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		C2A0CCF216DE12900035FB71 /* MIDIMiddleManTest */ = {
+			isa = PBXGroup;
+			children = (
+				C2A0CCF816DE12900035FB71 /* MIDIMiddleManTest.hh */,
+				C2A0CCF916DE12900035FB71 /* MIDIMiddleManTest.mm */,
+				C2A0CCF316DE12900035FB71 /* Supporting Files */,
+			);
+			path = MIDIMiddleManTest;
+			sourceTree = "<group>";
+		};
+		C2A0CCF316DE12900035FB71 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2A0CCF416DE12900035FB71 /* MIDIMiddleManTest-Info.plist */,
+				C2A0CCF516DE12900035FB71 /* InfoPlist.strings */,
+				C2A0CCFB16DE12900035FB71 /* MIDIMiddleManTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C2F172E416C274A800298B7C = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +135,8 @@
 				C269B9EC16C501060006BA03 /* CoreMIDIServer.framework */,
 				C29F8B3016C27D5200D49492 /* CoreMIDI.framework */,
 				C2F172EF16C274A800298B7C /* MIDI Middle Man */,
+				C2A0CCF216DE12900035FB71 /* MIDIMiddleManTest */,
+				C2A0CCE916DE12900035FB71 /* Frameworks */,
 				C2F172EE16C274A800298B7C /* Products */,
 				C216F38616C5239800F6DC32 /* Echo.cpp */,
 			);
@@ -70,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F172ED16C274A800298B7C /* MIDI Middle Man */,
+				C2A0CCE816DE12900035FB71 /* MIDIMiddleManTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				C2F172F016C274A800298B7C /* main.cpp */,
+				C2A0CD0316DE37100035FB71 /* CMMMConnection.h */,
+				C2A0CD0416DE37100035FB71 /* CMMMConnection.mm */,
 				C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */,
 				74ABBB8716DA3FB700650C7F /* MIDIMiddleMan.cpp */,
 				74ABBB8816DA3FB700650C7F /* MIDIMiddleMan.hpp */,
@@ -88,6 +167,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C2A0CCE716DE12900035FB71 /* MIDIMiddleManTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2A0CCFE16DE12900035FB71 /* Build configuration list for PBXNativeTarget "MIDIMiddleManTest" */;
+			buildPhases = (
+				C2A0CCE316DE12900035FB71 /* Sources */,
+				C2A0CCE416DE12900035FB71 /* Frameworks */,
+				C2A0CCE516DE12900035FB71 /* Resources */,
+				C2A0CCE616DE12900035FB71 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIDIMiddleManTest;
+			productName = MIDIMiddleManTest;
+			productReference = C2A0CCE816DE12900035FB71 /* MIDIMiddleManTest.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		C2F172EC16C274A800298B7C /* MIDI Middle Man */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2F172F616C274A800298B7C /* Build configuration list for PBXNativeTarget "MIDI Middle Man" */;
@@ -127,23 +224,100 @@
 			projectRoot = "";
 			targets = (
 				C2F172EC16C274A800298B7C /* MIDI Middle Man */,
+				C2A0CCE716DE12900035FB71 /* MIDIMiddleManTest */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		C2A0CCE516DE12900035FB71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2A0CCF716DE12900035FB71 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C2A0CCE616DE12900035FB71 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		C2A0CCE316DE12900035FB71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2A0CCFA16DE12900035FB71 /* MIDIMiddleManTest.mm in Sources */,
+				C2A0CCFF16DE1B2F0035FB71 /* main.cpp in Sources */,
+				C2A0CD0016DE1B320035FB71 /* MIDIMiddleMan.cpp in Sources */,
+				C2A0CD0616DE37100035FB71 /* CMMMConnection.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2F172E916C274A800298B7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				74ABBB8916DA3FB700650C7F /* MIDIMiddleMan.cpp in Sources */,
 				C2F172F116C274A800298B7C /* main.cpp in Sources */,
+				C2A0CD0516DE37100035FB71 /* CMMMConnection.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		C2A0CCF516DE12900035FB71 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2A0CCF616DE12900035FB71 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		C2A0CCFC16DE12900035FB71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MIDIMiddleManTest/MIDIMiddleManTest-Prefix.pch";
+				INFOPLIST_FILE = "MIDIMiddleManTest/MIDIMiddleManTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C2A0CCFD16DE12900035FB71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MIDIMiddleManTest/MIDIMiddleManTest-Prefix.pch";
+				INFOPLIST_FILE = "MIDIMiddleManTest/MIDIMiddleManTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		C2F172F416C274A800298B7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -220,6 +394,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C2A0CCFE16DE12900035FB71 /* Build configuration list for PBXNativeTarget "MIDIMiddleManTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2A0CCFC16DE12900035FB71 /* Debug */,
+				C2A0CCFD16DE12900035FB71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C2F172E816C274A800298B7C /* Build configuration list for PBXProject "MIDI Middle Man" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

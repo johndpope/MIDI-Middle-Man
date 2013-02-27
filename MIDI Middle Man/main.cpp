@@ -11,8 +11,38 @@
 extern ItemCount           gSources, gDestinations;
 extern NSMutableArray      *sourceList, *destinationList;
 
+class IThing
+{
+public:
+    virtual void DoStuff() = 0;
+    virtual ~IThing() {}
+};
+
+class CThing : public IThing
+{
+public:
+    // implement IThing
+    virtual void DoStuff() {printf("hello!");}
+    
+private:
+    
+    
+};
+
+
 int main(int argc, const char * argv[])
 {
+    CThing thing;
+    
+    thing.DoStuff();
+    
+    IThing *myThing = &thing;
+    
+    myThing->DoStuff();
+    
+    
+    
+    
     MIDIClientRef           client;
     MIDIPortRef             inputPort, outputPort;
     MIDIEndpointRef         mySource, myDestination;
@@ -32,8 +62,8 @@ int main(int argc, const char * argv[])
 
     
     // create an empty array for source list
-    sourceList = [ NSMutableArray array ];
-    destinationList = [ NSMutableArray array];
+    sourceList = [NSMutableArray array];
+    destinationList = [NSMutableArray array];
     
     // get global number of sources and destinations
     gSources = MIDIGetNumberOfSources();
@@ -41,13 +71,13 @@ int main(int argc, const char * argv[])
     
     CFStringRef desiredSourceName = CFSTR(DESIRED_SOURCE_NAME);
     NSUInteger indexOfDesiredSource = -1;
-    ListCurrentSources(sourceList);
+    gSources = ListCurrentSources(sourceList);
     indexOfDesiredSource = FindIndexOfDesiredSource(sourceList, desiredSourceName);
     ConnectInputs(indexOfDesiredSource, inputPort);
     
     CFStringRef desiredDestinationName = CFSTR(DESIRED_DESTINATION_NAME);
     NSUInteger indexOfDesiredDestination = -1;
-    ListCurrentDestinations(destinationList);
+    gDestinations = ListCurrentDestinations(destinationList);
     indexOfDesiredDestination = FindIndexOfDesiredDestination(destinationList, desiredDestinationName);
     ConnectOutputs(indexOfDesiredDestination, &myOutputPortDevicePair);
     
