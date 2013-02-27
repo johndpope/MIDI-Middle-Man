@@ -22,6 +22,8 @@
     ItemCount         gSources, gDestinations;
     NSMutableArray    *sourceList, *destinationList;
     
+    CFStringRef       desiredSourceName, desiredDestinationName;
+    
     bool              isSourceConnected, isDestinationConnected;
 }
 
