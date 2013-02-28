@@ -14,3 +14,9 @@ MIDI Middle Man.xcodeproj/xcuserdata/joenoel.xcuserdatad/xcschemes/MIDI Middle M
 MIDI Middle Man.xcodeproj/xcuserdata/joenoel.xcuserdatad/xcschemes/xcschememanagement.plist
 
 Sketch Overview.graffle
+
+Build/MMM Build/*
+
+Build/MIDI Middle Man/Logs/*
+
+*.xcactivitylog

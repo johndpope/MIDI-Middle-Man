@@ -376,6 +376,7 @@
 		C2F172F716C274A800298B7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -383,6 +384,7 @@
 		C2F172F816C274A800298B7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -397,6 +399,7 @@
 				C2A0CCFD16DE12900035FB71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2F172E816C274A800298B7C /* Build configuration list for PBXProject "MIDI Middle Man" */ = {
 			isa = XCConfigurationList;

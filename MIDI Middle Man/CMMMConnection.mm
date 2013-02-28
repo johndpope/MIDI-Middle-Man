@@ -250,6 +250,7 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
                           classPointer,
                           &(destination));
 
+    // connect it all up
     [self RefreshInput];
     [self RefreshOutput];
         
