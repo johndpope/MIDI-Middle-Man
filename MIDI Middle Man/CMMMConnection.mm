@@ -27,6 +27,11 @@ static void NotifyProc (const MIDINotification *message, void *refCon);
 @synthesize instanceNumber;
 @synthesize instanceName;
 
+@synthesize isSourceConnected, isDestinationConnected;
+
+
+@synthesize delegate;
+
 static void	InputReadProc(const MIDIPacketList *pktlist, void * refCon, void * connRefCon)
 {
     MIDIEndpointRef *source = (MIDIEndpointRef *)refCon;
@@ -74,6 +79,7 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
     else
     {
         return false;
+
     }
     
 }
@@ -87,10 +93,12 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
     {
         gDestinations = destinations;
         return true;
+
     }
     else
     {
         return false;
+
     }
     
 }
@@ -100,6 +108,7 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
 {
     ItemCount sources = MIDIGetNumberOfSources(); // count the number of sources
     CFStringRef sourceName;
+    [sourceList removeAllObjects];
     
     for (int nnn = 0; nnn < sources; ++nnn) // for each source
     {
@@ -119,6 +128,8 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
 {
     ItemCount destinations = MIDIGetNumberOfDestinations();
     CFStringRef destinationName;
+    
+    [destinationList removeAllObjects];
     
     for (int nnn = 0; nnn < destinations; ++nnn)
     {
@@ -160,10 +171,15 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
         MIDIEndpointRef inputDev = MIDIGetSource((int) indexOfDesiredSource); // more elegant cast here?
         MIDIPortConnectSource(inputPort, inputDev, NULL);
         isSourceConnected = true;
+        [[self delegate] ConnectionStatusChanged: self]; // delegate
+
+        
     }
     else
     {
         isSourceConnected = false;
+        [[self delegate] ConnectionStatusChanged: self]; // delegate
+
     }
 }
 
@@ -174,10 +190,12 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
         MIDIEndpointRef endpoint= MIDIGetDestination(indexOfDesiredDestination);
         self->outputDevice = endpoint;
         isDestinationConnected = true;
+
     }
     else
     {
         isDestinationConnected = false;
+
     }
     
 }

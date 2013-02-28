@@ -11,6 +11,12 @@
 #include <CoreFoundation/CoreFoundation.h>
 #import <CoreFoundation/CFString.h>
 
+@protocol ConnectionStatusDelegate <NSObject>
+
+- (void) ConnectionStatusChanged:(id) objectChanged;
+
+@end
+
 @interface CMMMConnection : NSObject
 {
     MIDIClientRef     client;
@@ -24,7 +30,8 @@
     
     CFStringRef       desiredSourceName, desiredDestinationName;
     
-    bool              isSourceConnected, isDestinationConnected;
+    
+    id <ConnectionStatusDelegate> delegate;
 }
 
 // name and number for the instance
@@ -34,10 +41,14 @@
 // name of desired source and destination from external device (e.g. Launchkey MIDI)
 @property CFStringRef       desiredSourceName, desiredDestinationName;
 
+@property (retain) id delegate;
+
+@property     bool          isSourceConnected, isDestinationConnected;
+
+
 // create MMM connections with desired source
 - (id)  CreateMMMConnection:(int)number ToSource:(NSString *)desiredSourceName andDestination:(NSString *)desiredDestinationName;
 - (id)  CreateMMMConnection:(int)number ToSource:(NSString *)desiredSourceName;
 - (id)  CreateMMMConnection:(int)number ToDestination:(NSString *)desiredDestinationName;
-
 
 @end
