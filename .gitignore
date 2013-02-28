@@ -20,3 +20,4 @@ Build/MMM Build/*
 Build/MIDI Middle Man/Logs/*
 
 *.xcactivitylog
+MIDI Middle Man.xcodeproj/xcuserdata/Joe.Noel.xcuserdatad/xcschemes/MIDI Middle Man App.xcscheme
