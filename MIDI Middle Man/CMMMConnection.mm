@@ -51,15 +51,15 @@ static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, voi
 
 static void NotifyProc (const MIDINotification *message, void *refCon)
 {
-    /*
-    if ( [self HaveSourcesChanged] || [self HaveDestinationsChanged])
-    {
-        [self RefreshInput];
-        
-        [self RefreshOutput];
-    }
-    */
+    CMMMConnection *thisOne = (__bridge CMMMConnection *) refCon;
     
+    if ([thisOne HaveSourcesChanged] || [thisOne HaveDestinationsChanged])
+    {
+        [thisOne RefreshInput];
+        
+        [thisOne RefreshOutput];
+    }
+
 }
 
 - (bool) HaveSourcesChanged

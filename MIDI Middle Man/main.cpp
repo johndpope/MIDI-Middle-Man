@@ -15,8 +15,8 @@ int main(int argc, const char * argv[])
     CMMMConnection *firstMMM = [[CMMMConnection alloc] init];
     CMMMConnection *secondMMM = [[CMMMConnection alloc] init];
     
-    [firstMMM CreateMMMConnection:1 ToSource:@"Port 1" andDestination:@"Port 1"];
-    [secondMMM CreateMMMConnection:2 ToSource:@"Hi" andDestination:@"Hi"];
+    [firstMMM CreateMMMConnection:1 ToSource:@"Launchkey MIDI" andDestination:@"Launchkey MIDI"];
+    [secondMMM CreateMMMConnection:2 ToSource:@"Launchpad S" andDestination:@"Launchpad S"];
     
     CFRunLoopRun();
     
