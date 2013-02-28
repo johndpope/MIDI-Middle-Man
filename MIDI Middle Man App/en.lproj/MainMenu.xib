@@ -725,6 +725,30 @@
 					</object>
 					<int key="connectionID">703</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">destinationLabel_1</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="6775523"/>
+					</object>
+					<int key="connectionID">704</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">sourceLabel_2</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="961648113"/>
+					</object>
+					<int key="connectionID">705</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">destinationLabel_2</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="615556017"/>
+					</object>
+					<int key="connectionID">706</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1201,10 +1225,10 @@
 							<reference ref="888079046"/>
 							<reference ref="413036396"/>
 							<reference ref="770438504"/>
-							<reference ref="6775523"/>
 							<reference ref="961648113"/>
 							<reference ref="615556017"/>
 							<reference ref="406142697"/>
+							<reference ref="6775523"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -1602,7 +1626,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">703</int>
+			<int key="maxID">706</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

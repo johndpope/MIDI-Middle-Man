@@ -190,11 +190,15 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
         MIDIEndpointRef endpoint= MIDIGetDestination(indexOfDesiredDestination);
         self->outputDevice = endpoint;
         isDestinationConnected = true;
+        [[self delegate] ConnectionStatusChanged: self]; // delegate
+
 
     }
     else
     {
         isDestinationConnected = false;
+        [[self delegate] ConnectionStatusChanged: self]; // delegate
+
 
     }
     

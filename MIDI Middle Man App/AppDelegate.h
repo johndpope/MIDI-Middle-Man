@@ -21,6 +21,9 @@ CMMMConnection *firstMMM;
 CMMMConnection *secondMMM;
 }
 @property (weak) IBOutlet NSTextField *sourceLabel_1;
+@property (weak) IBOutlet NSTextField *destinationLabel_1;
+@property (weak) IBOutlet NSTextField *sourceLabel_2;
+@property (weak) IBOutlet NSTextField *destinationLabel_2;
 
 @property (assign) IBOutlet NSWindow *window;
 
