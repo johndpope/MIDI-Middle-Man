@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MIDI Middle Man App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>MIDI Middle Man.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>C2A0CCE716DE12900035FB71</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C2C3A85616DF7A8400319B77</key>
 		<dict>
 			<key>primary</key>
 			<true/>

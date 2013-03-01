@@ -20,10 +20,25 @@
 CMMMConnection *firstMMM;
 CMMMConnection *secondMMM;
 }
+
+// labels
 @property (weak) IBOutlet NSTextField *sourceLabel_1;
 @property (weak) IBOutlet NSTextField *destinationLabel_1;
 @property (weak) IBOutlet NSTextField *sourceLabel_2;
 @property (weak) IBOutlet NSTextField *destinationLabel_2;
+
+// text field outlets
+@property (weak) IBOutlet NSTextField *sourceTextField1;
+@property (weak) IBOutlet NSTextField *destinationTextField1;
+@property (weak) IBOutlet NSTextField *sourceTextField2;
+@property (weak) IBOutlet NSTextField *destinationTextField2;
+
+
+// text field actions
+- (IBAction)sourceTextField1A:(NSTextField *)sender;
+- (IBAction)destinationTextField:(NSTextField *)sender;
+- (IBAction)sourceTextField2:(NSTextField *)sender;
+- (IBAction)destinationTextField2:(NSTextField *)sender;
 
 @property (assign) IBOutlet NSWindow *window;
 

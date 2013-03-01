@@ -28,9 +28,6 @@
     ItemCount         gSources, gDestinations;
     NSMutableArray    *sourceList, *destinationList;
     
-    CFStringRef       desiredSourceName, desiredDestinationName;
-    
-    
     id <ConnectionStatusDelegate> delegate;
 }
 
@@ -50,5 +47,10 @@
 - (id)  CreateMMMConnection:(int)number ToSource:(NSString *)desiredSourceName andDestination:(NSString *)desiredDestinationName;
 - (id)  CreateMMMConnection:(int)number ToSource:(NSString *)desiredSourceName;
 - (id)  CreateMMMConnection:(int)number ToDestination:(NSString *)desiredDestinationName;
+
+// change name
+- (void) ChangeSourceNameTo:(NSString *) name;
+- (void) ChangeDestinationNameTo:(NSString *) name;
+
 
 @end

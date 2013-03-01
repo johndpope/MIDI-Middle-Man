@@ -24,10 +24,10 @@ static void NotifyProc (const MIDINotification *message, void *refCon);
 
 @implementation CMMMConnection
 
-@synthesize instanceNumber;
-@synthesize instanceName;
-
+@synthesize instanceNumber, instanceName;
 @synthesize isSourceConnected, isDestinationConnected;
+@synthesize desiredSourceName, desiredDestinationName;
+
 
 
 @synthesize delegate;
@@ -278,6 +278,22 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
         
     return self;
 }
+
+- (void) ChangeSourceNameTo:(NSString *) name
+{
+    self.desiredSourceName = (__bridge CFStringRef) name;
+    
+    [self RefreshInput];
+}
+
+- (void) ChangeDestinationNameTo:(NSString *) name
+{
+    self.desiredDestinationName = (__bridge CFStringRef) name;
+    
+    [self RefreshOutput];
+}
+
+
 
 
 @end

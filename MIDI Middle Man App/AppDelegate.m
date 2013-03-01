@@ -15,6 +15,8 @@
 @synthesize sourceLabel_2;
 @synthesize destinationLabel_2;
 
+@synthesize sourceTextField1, sourceTextField2, destinationTextField1, destinationTextField2;
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     firstMMM = [[CMMMConnection alloc] init];
@@ -24,6 +26,12 @@
     
     [firstMMM CreateMMMConnection:1 ToSource:@DESIRED_SOURCE_NAME_1 andDestination:@DESIRED_DESTINATION_NAME_1];
     [secondMMM CreateMMMConnection:2 ToSource:@DESIRED_SOURCE_NAME_2 andDestination:@DESIRED_DESTINATION_NAME_2];
+    
+    [sourceTextField1 setStringValue:@DESIRED_SOURCE_NAME_1];
+    [sourceTextField2 setStringValue:@DESIRED_SOURCE_NAME_2];
+    [destinationTextField1 setStringValue:@DESIRED_DESTINATION_NAME_1];
+    [destinationTextField2 setStringValue:@DESIRED_DESTINATION_NAME_2];
+
     
 }
 
@@ -88,4 +96,39 @@ if ([whereChanged isDestinationConnected])
     
 }
 
+- (IBAction)sourceTextField1A:(NSTextField *)sender
+{
+    NSString * name = [sender stringValue];
+    if (name)
+    {
+        [firstMMM ChangeSourceNameTo:name];
+    }
+}
+
+- (IBAction)destinationTextField:(NSTextField *)sender
+{
+    NSString * name = [sender stringValue];
+    if (name)
+    {
+        [firstMMM ChangeDestinationNameTo:name];
+    }
+}
+
+- (IBAction)sourceTextField2:(NSTextField *)sender
+{
+    NSString * name = [sender stringValue];
+    if (name)
+    {
+        [secondMMM ChangeSourceNameTo:name];
+    }
+}
+
+- (IBAction)destinationTextField2:(NSTextField *)sender
+{
+    NSString * name = [sender stringValue];
+    if (name)
+    {
+        [secondMMM ChangeDestinationNameTo:name];
+    }
+}
 @end
