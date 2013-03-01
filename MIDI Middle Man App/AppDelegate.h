@@ -10,7 +10,7 @@
 #include "CMMMConnection.h"
 
 #define DESIRED_SOURCE_NAME_1 "Launchkey MIDI"
-#define DESIRED_DESTINATION_NAME_1 "Port 1"
+#define DESIRED_DESTINATION_NAME_1 "Launchkey MIDI"
 #define DESIRED_SOURCE_NAME_2 "Launchpad S"
 #define DESIRED_DESTINATION_NAME_2 "Launchpad S"
 
@@ -20,11 +20,11 @@
 CMMMConnection *firstMMM;
 CMMMConnection *secondMMM;
 }
+
 @property (weak) IBOutlet NSTextField *sourceLabel_1;
 @property (weak) IBOutlet NSTextField *destinationLabel_1;
 @property (weak) IBOutlet NSTextField *sourceLabel_2;
 @property (weak) IBOutlet NSTextField *destinationLabel_2;
-
 
 
 @property (assign) IBOutlet NSWindow *window;
