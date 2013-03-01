@@ -8,28 +8,11 @@
 
 #import "CMMMConnection.h"
 
-@interface CMMMConnection()
-
-// Callback functions
-static void	InputReadProc(const MIDIPacketList *pktlist, void * refCon, void * connRefCon);
-static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon);
-static void NotifyProc (const MIDINotification *message, void *refCon);
-
-
-- (void) RefreshInput;
-- (void) RefreshOutput;
-
-
-@end
-
 @implementation CMMMConnection
 
-@synthesize instanceNumber;
-@synthesize instanceName;
-
+@synthesize instanceNumber, instanceName;
 @synthesize isSourceConnected, isDestinationConnected;
-
-
+@synthesize desiredSourceName, desiredDestinationName;
 @synthesize delegate;
 
 static void	InputReadProc(const MIDIPacketList *pktlist, void * refCon, void * connRefCon)

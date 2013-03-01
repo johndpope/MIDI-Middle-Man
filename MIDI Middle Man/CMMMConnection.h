@@ -28,9 +28,6 @@
     ItemCount         gSources, gDestinations;
     NSMutableArray    *sourceList, *destinationList;
     
-    CFStringRef       desiredSourceName, desiredDestinationName;
-    
-    
     id <ConnectionStatusDelegate> delegate;
 }
 
