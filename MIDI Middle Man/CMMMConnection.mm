@@ -24,8 +24,13 @@ static void NotifyProc (const MIDINotification *message, void *refCon);
 
 @implementation CMMMConnection
 
-@synthesize instanceNumber;
-@synthesize instanceName;
+@synthesize instanceNumber, instanceName;
+@synthesize isSourceConnected, isDestinationConnected;
+@synthesize desiredSourceName, desiredDestinationName;
+
+
+
+@synthesize delegate;
 
 static void	InputReadProc(const MIDIPacketList *pktlist, void * refCon, void * connRefCon)
 {
@@ -51,15 +56,15 @@ static void	DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, voi
 
 static void NotifyProc (const MIDINotification *message, void *refCon)
 {
-    /*
-    if ( [self HaveSourcesChanged] || [self HaveDestinationsChanged])
-    {
-        [self RefreshInput];
-        
-        [self RefreshOutput];
-    }
-    */
+    CMMMConnection *thisOne = (__bridge CMMMConnection *) refCon;
     
+    if ([thisOne HaveSourcesChanged] || [thisOne HaveDestinationsChanged])
+    {
+        [thisOne RefreshInput];
+        
+        [thisOne RefreshOutput];
+    }
+
 }
 
 - (bool) HaveSourcesChanged
@@ -74,6 +79,7 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
     else
     {
         return false;
+
     }
     
 }
@@ -87,10 +93,12 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
     {
         gDestinations = destinations;
         return true;
+
     }
     else
     {
         return false;
+
     }
     
 }
@@ -100,6 +108,7 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
 {
     ItemCount sources = MIDIGetNumberOfSources(); // count the number of sources
     CFStringRef sourceName;
+    [sourceList removeAllObjects];
     
     for (int nnn = 0; nnn < sources; ++nnn) // for each source
     {
@@ -119,6 +128,8 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
 {
     ItemCount destinations = MIDIGetNumberOfDestinations();
     CFStringRef destinationName;
+    
+    [destinationList removeAllObjects];
     
     for (int nnn = 0; nnn < destinations; ++nnn)
     {
@@ -160,10 +171,15 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
         MIDIEndpointRef inputDev = MIDIGetSource((int) indexOfDesiredSource); // more elegant cast here?
         MIDIPortConnectSource(inputPort, inputDev, NULL);
         isSourceConnected = true;
+        [[self delegate] ConnectionStatusChanged: self]; // delegate
+
+        
     }
     else
     {
         isSourceConnected = false;
+        [[self delegate] ConnectionStatusChanged: self]; // delegate
+
     }
 }
 
@@ -174,10 +190,16 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
         MIDIEndpointRef endpoint= MIDIGetDestination(indexOfDesiredDestination);
         self->outputDevice = endpoint;
         isDestinationConnected = true;
+        [[self delegate] ConnectionStatusChanged: self]; // delegate
+
+
     }
     else
     {
         isDestinationConnected = false;
+        [[self delegate] ConnectionStatusChanged: self]; // delegate
+
+
     }
     
 }
@@ -250,11 +272,28 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
                           classPointer,
                           &(destination));
 
+    // connect it all up
     [self RefreshInput];
     [self RefreshOutput];
         
     return self;
 }
+
+- (void) ChangeSourceNameTo:(NSString *) name
+{
+    self.desiredSourceName = (__bridge CFStringRef) name;
+    
+    [self RefreshInput];
+}
+
+- (void) ChangeDestinationNameTo:(NSString *) name
+{
+    self.desiredDestinationName = (__bridge CFStringRef) name;
+    
+    [self RefreshOutput];
+}
+
+
 
 
 @end

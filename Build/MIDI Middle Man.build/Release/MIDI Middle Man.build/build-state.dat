@@ -1,0 +1,173 @@
+TMIDI Middle Man
+v5
+r1
+cCheck dependencies
+cCompileC "build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/CMMMConnection.o" "/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm" normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/main.o" "/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/main.cpp" normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLd "/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man" normal x86_64
+cGenerateDSYMFile "/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man.dSYM" "/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man"
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
+c000000005107D28E00000000000000AA
+t1359467150
+s170
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000050F67A0200000000000001E5
+t1358330370
+s485
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+c0000000050F67A030000000000080504
+t1358330371
+s525572
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFRunLoop.h
+c0000000050F67A020000000000001E1F
+t1358330370
+s7711
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI
+c0000000050F67A030000000000014624
+t1358330371
+s83492
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMIDI.framework/Headers/MIDIServices.h
+c0000000050F67A03000000000001084E
+t1358330371
+s67662
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/stdio.h
+c0000000050F67A050000000000004523
+t1358330373
+s17699
+
+N/Users/Joe.Noel/Developer/MIDI Middle Man/../../../../System/Library/Frameworks/CoreMIDIServer.framework/CoreMIDIServer
+c000000005081171800000000000065C0
+t1350637336
+s26048
+
+N/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h
+c00000000512F2AEA0000000000000563
+t1362045674
+s1379
+
+N/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm
+c00000000512F29DF0000000000001BC8
+t1362045407
+s7112
+
+N/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/main.cpp
+c00000000512F300A0000000000000318
+t1362046986
+s792
+i<CoreMIDI/MIDIServices.h>
+i<CoreFoundation/CFRunLoop.h>
+i<stdio.h>
+i<Cocoa/Cocoa.h>
+i"CMMMConnection.h"
+
+N/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/CMMMConnection.o
+t2
+s0
+
+N/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/MIDI Middle Man.LinkFileList
+c00000000512F3BD1000000000000010C
+t1362050001
+s268
+
+N/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/main.o
+t2
+s0
+
+N/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man
+t2
+s0
+
+N/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man.dSYM
+t2
+s0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciese273535173dfb641^32ff845173dfb641^---0#1#0#--18"Check dependencies36"364F71B2-5385-4BF2-AE1B-A99DEF02CB64-
+
+CCompileC "build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/CMMMConnection.o" "/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm" normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383742801.526353
+e383742803.550737
+r1
+xCompileC
+xbuild/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/CMMMConnection.o
+x/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm
+xnormal
+xx86_64
+xobjective-c++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:25:1: warning: autosynthesized property 'desiredDestinationName' will use synthesized instance variable '_desiredDestinationName', not existing instance variable 'desiredDestinationName' [-Wobjc-autosynthesis-property-ivar-name-match]
+o@implementation CMMMConnection
+o^
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:35:48: note: property declared here
+o@property CFStringRef       desiredSourceName, desiredDestinationName;
+o                                               ^
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:25:42: note: instance variable is declared here
+o    CFStringRef       desiredSourceName, desiredDestinationName;
+o                                         ^
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:25:1: warning: autosynthesized property 'desiredSourceName' will use synthesized instance variable '_desiredSourceName', not existing instance variable 'desiredSourceName' [-Wobjc-autosynthesis-property-ivar-name-match]
+o@implementation CMMMConnection
+o^
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:35:29: note: property declared here
+o@property CFStringRef       desiredSourceName, desiredDestinationName;
+o                            ^
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:25:23: note: instance variable is declared here
+o    CFStringRef       desiredSourceName, desiredDestinationName;
+o                      ^
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:25:17: warning: incomplete implementation [-Wincomplete-implementation]
+o@implementation CMMMConnection
+o                ^
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:39:1: note: method definition for 'CreateMMMConnection:ToSource:' not found
+o- (id)  CreateMMMConnection:(int)number ToSource:(NSString *)desiredSourceName;
+o^
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:40:1: note: method definition for 'CreateMMMConnection:ToDestination:' not found
+o- (id)  CreateMMMConnection:(int)number ToDestination:(NSString *)desiredDestinationName;
+o^
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:45:20: warning: comparison between NULL and non-pointer ('MIDIPortRef' (aka 'unsigned int') and NULL) [-Wnull-arithmetic]
+o    if (outputPort != NULL && outputDevice != NULL)
+o        ~~~~~~~~~~ ^  ~~~~
+o/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:45:44: warning: comparison between NULL and non-pointer ('MIDIEndpointRef' (aka 'unsigned int') and NULL) [-Wnull-arithmetic]
+o    if (outputPort != NULL && outputDevice != NULL)
+o                              ~~~~~~~~~~~~ ^  ~~~~
+o5 warnings generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection83"Compile /Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm05f8865173dfb641^b9fb8c5373dfb641^-2841"/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:25:1: warning: autosynthesized property 'desiredDestinationName' will use synthesized instance variable '_desiredDestinationName', not existing instance variable 'desiredDestinationName' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation CMMMConnection^/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:35:48: note: property declared here@property CFStringRef       desiredSourceName, desiredDestinationName;                                               ^/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:25:42: note: instance variable is declared here    CFStringRef       desiredSourceName, desiredDestinationName;                                         ^/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:25:1: warning: autosynthesized property 'desiredSourceName' will use synthesized instance variable '_desiredSourceName', not existing instance variable 'desiredSourceName' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation CMMMConnection^/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:35:29: note: property declared here@property CFStringRef       desiredSourceName, desiredDestinationName;                            ^/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:25:23: note: instance variable is declared here    CFStringRef       desiredSourceName, desiredDestinationName;                      ^/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:25:17: warning: incomplete implementation [-Wincomplete-implementation]@implementation CMMMConnection                ^/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:39:1: note: method definition for 'CreateMMMConnection:ToSource:' not found- (id)  CreateMMMConnection:(int)number ToSource:(NSString *)desiredSourceName;^/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.h:40:1: note: method definition for 'CreateMMMConnection:ToDestination:' not found- (id)  CreateMMMConnection:(int)number ToDestination:(NSString *)desiredDestinationName;^/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:45:20: warning: comparison between NULL and non-pointer ('MIDIPortRef' (aka 'unsigned int') and NULL) [-Wnull-arithmetic]    if (outputPort != NULL && outputDevice != NULL)        ~~~~~~~~~~ ^  ~~~~/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm:45:44: warning: comparison between NULL and non-pointer ('MIDIEndpointRef' (aka 'unsigned int') and NULL) [-Wnull-arithmetic]    if (outputPort != NULL && outputDevice != NULL)                              ~~~~~~~~~~~~ ^  ~~~~5 warnings generated.5(36%IDEClangDiagnosticActivityLogMessage2@171"Autosynthesized property 'desiredDestinationName' will use synthesized instance variable '_desiredDestinationName', not existing instance variable 'desiredDestinationName'-383742803#18446744073709551615#0#2(2@22"Property declared here-383742803#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@98"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.h0000000000000000^34#47#34#47#1001#0#14"Semantic Issue--2@34"Instance variable is declared here-383742803#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.h0000000000000000^24#41#24#41#669#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^24#0#24#0#563#0#14"Semantic Issue--2@156"Autosynthesized property 'desiredSourceName' will use synthesized instance variable '_desiredSourceName', not existing instance variable 'desiredSourceName'-383742803#18446744073709551615#0#2(2@22"Property declared here-383742803#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.h0000000000000000^34#28#34#28#982#0#14"Semantic Issue--2@34"Instance variable is declared here-383742803#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.h0000000000000000^24#22#24#22#650#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^24#0#24#0#563#0#14"Semantic Issue--2@25"Incomplete implementation-383742803#18446744073709551615#0#2(2@63"Method definition for 'CreateMMMConnection:ToSource:' not found-383742803#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.h0000000000000000^38#0#38#0#1202#0#14"Semantic Issue--2@68"Method definition for 'CreateMMMConnection:ToDestination:' not found-383742803#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.h0000000000000000^39#0#39#0#1282#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^24#16#24#16#579#0#14"Semantic Issue--2@85"Comparison between NULL and non-pointer ('MIDIPortRef' (aka 'unsigned int') and NULL)-383742803#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^44#19#44#19#1191#0#14"Semantic Issue2(3@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^44#8#44#18#1180#0#3@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^44#22#44#26#1194#0#-2@89"Comparison between NULL and non-pointer ('MIDIEndpointRef' (aka 'unsigned int') and NULL)-383742803#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^44#43#44#43#1215#0#14"Semantic Issue2(3@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^44#30#44#42#1202#0#3@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^44#46#44#50#1218#0#-0#0#0#-19%DVTDocumentLocation4@99"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/CMMMConnection.mm0000000000000000^3290"CompileC "build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/CMMMConnection.o" "MIDI Middle Man/CMMMConnection.mm" normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/Joe.Noel/Developer/MIDI Middle Man"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch x86_64 -fmessage-length=0 -std=gnu++11 -stdlib=libc++ -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility=hidden -fvisibility-inlines-hidden -Wno-sign-conversion -iquote "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/MIDI Middle Man-generated-files.hmap" "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/MIDI Middle Man-own-target-headers.hmap" "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/MIDI Middle Man-all-target-headers.hmap" -iquote "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/MIDI Middle Man-project-headers.hmap" "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/include" -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/DerivedSources/x86_64" "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/DerivedSources" "-F/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release" -MMD -MT dependencies -MF "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/CMMMConnection.d" --serialize-diagnostics "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/CMMMConnection.dia" -c "/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/CMMMConnection.mm" -o "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/CMMMConnection.o"36"209420B4-B2FD-40D3-B0B5-3300A24AF6F7-
+
+CCompileC "build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/main.o" "/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/main.cpp" normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383742801.526359
+e383742803.831949
+r1
+xCompileC
+xbuild/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/main.o
+x/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/main.cpp
+xnormal
+xx86_64
+xobjective-c++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Compile /Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/main.cpp9cf8865173dfb641^05fad45373dfb641^---0#0#0#-19%DVTDocumentLocation2@90"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/MIDI%20Middle%20Man/main.cpp0000000000000000^3232"CompileC "build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/main.o" "MIDI Middle Man/main.cpp" normal x86_64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/Joe.Noel/Developer/MIDI Middle Man"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch x86_64 -fmessage-length=0 -std=gnu++11 -stdlib=libc++ -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility=hidden -fvisibility-inlines-hidden -Wno-sign-conversion -iquote "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/MIDI Middle Man-generated-files.hmap" "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/MIDI Middle Man-own-target-headers.hmap" "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/MIDI Middle Man-all-target-headers.hmap" -iquote "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/MIDI Middle Man-project-headers.hmap" "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/include" -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/DerivedSources/x86_64" "-I/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/DerivedSources" "-F/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release" -MMD -MT dependencies -MF "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/main.d" --serialize-diagnostics "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/main.dia" -c "/Users/Joe.Noel/Developer/MIDI Middle Man/MIDI Middle Man/main.cpp" -o "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/main.o"36"4055EF44-0B67-485E-90B3-B0C2B4796B17-
+
+CGenerateDSYMFile "/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man.dSYM" "/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man"
+s383742804.112626
+e383742804.156859
+r1
+xGenerateDSYMFile
+x/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man.dSYM
+x/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Generate /Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man.dSYM10e81c5473dfb641^5227285473dfb641^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/Joe.Noel/Developer/MIDI%20Middle%20Man/build/Release/MIDI%20Middle%20Man.dSYM000000000080d041^393"GenerateDSYMFile "build/Release/MIDI Middle Man.dSYM" "build/Release/MIDI Middle Man"    cd "/Users/Joe.Noel/Developer/MIDI Middle Man"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil "/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man" -o "/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man.dSYM"36"C38AD882-CF75-4AB7-8669-39491413226A-
+
+CLd "/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man" normal x86_64
+s383742803.838822
+e383742804.105687
+r1
+xLd
+x/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man
+xnormal
+xx86_64
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Link /Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Manb3d0d65373dfb641^a60d1b5473dfb641^---0#0#0#--866"Ld "build/Release/MIDI Middle Man" normal x86_64    cd "/Users/Joe.Noel/Developer/MIDI Middle Man"    setenv MACOSX_DEPLOYMENT_TARGET 10.8    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk "-L/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release" "-F/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release" -filelist "/Users/Joe.Noel/Developer/MIDI Middle Man/build/MIDI Middle Man.build/Release/MIDI Middle Man.build/Objects-normal/x86_64/MIDI Middle Man.LinkFileList" -mmacosx-version-min=10.8 -stdlib=libc++ -fobjc-arc -fobjc-link-runtime -framework CoreFoundation -framework CoreMIDIServer -framework CoreMIDI -o "/Users/Joe.Noel/Developer/MIDI Middle Man/build/Release/MIDI Middle Man"36"4E3031D9-B3B3-4912-8B29-5ED06C05DE3F-
+

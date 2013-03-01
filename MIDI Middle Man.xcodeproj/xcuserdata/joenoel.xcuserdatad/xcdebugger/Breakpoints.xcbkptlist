@@ -4,30 +4,17 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MIDI Middle Man/CMMMConnection.mm"
-         timestampString = "383692063.090606"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
-         landmarkName = "NotifyProc (const MIDINotification *message, void *refCon)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MIDI Middle Man/CMMMConnection.mm"
-         timestampString = "383694025.384712"
+         timestampString = "383861754.601071"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "40"
-         endingLineNumber = "40"
-         landmarkName = "DestinationReadProc(const MIDIPacketList *pktlist, void *refCon, void *connRefCon)"
-         landmarkType = "7">
+         startingLineNumber = "284"
+         endingLineNumber = "284"
+         landmarkName = "-ChangeSourceNameTo:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

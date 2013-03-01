@@ -3,8 +3,10 @@
 
 #import "CMMMConnection.h"
 
-#define DESIRED_SOURCE_NAME "Launchpad S"
-#define DESIRED_DESTINATION_NAME "Launchpad S"
+#define DESIRED_SOURCE_NAME_1 "Launchkey MIDI"
+#define DESIRED_DESTINATION_NAME_1 "Launchkey MIDI"
+#define DESIRED_SOURCE_NAME_2 "Launchpad S"
+#define DESIRED_DESTINATION_NAME_2 "Launchpad S"
 
 <<<<<<< HEAD
 int main(int argc, const char * argv[])
@@ -55,8 +57,8 @@ int main(int argc, const char * argv[])
     CMMMConnection *secondMMM = [[CMMMConnection alloc] init];
 >>>>>>> classReorganise
     
-    [firstMMM CreateMMMConnection:1 ToSource:@"Port 1" andDestination:@"Port 1"];
-    [secondMMM CreateMMMConnection:2 ToSource:@"Hi" andDestination:@"Hi"];
+    [firstMMM CreateMMMConnection:1 ToSource:@DESIRED_SOURCE_NAME_1 andDestination:@DESIRED_DESTINATION_NAME_1];
+    [secondMMM CreateMMMConnection:2 ToSource:@DESIRED_SOURCE_NAME_2 andDestination:@DESIRED_DESTINATION_NAME_2];
     
     CFRunLoopRun();
     

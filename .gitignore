@@ -11,6 +11,10 @@ MIDI Middle Man.xcodeproj/xcuserdata/Joe.Noel.xcuserdatad/xcschemes/MIDI Middle 
 
 MIDI Middle Man.xcodeproj/xcuserdata/joenoel.xcuserdatad/xcschemes/MIDI Middle Man.xcscheme
 
-MIDI Middle Man.xcodeproj/xcuserdata/joenoel.xcuserdatad/xcschemes/xcschememanagement.plist
-
 Sketch Overview.graffle
+
+Build/MMM Build/*
+
+Build/MIDI Middle Man/Logs/*
+
+*.xcactivitylog

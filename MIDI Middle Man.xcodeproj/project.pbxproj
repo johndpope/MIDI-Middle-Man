@@ -20,6 +20,16 @@
 		C2A0CD0216DE1BA00035FB71 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F8B3016C27D5200D49492 /* CoreMIDI.framework */; };
 		C2A0CD0516DE37100035FB71 /* CMMMConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A0CD0416DE37100035FB71 /* CMMMConnection.mm */; };
 		C2A0CD0616DE37100035FB71 /* CMMMConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A0CD0416DE37100035FB71 /* CMMMConnection.mm */; };
+		C2C3A85816DF7A8400319B77 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0CCEC16DE12900035FB71 /* Cocoa.framework */; };
+		C2C3A85E16DF7A8400319B77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2C3A85C16DF7A8400319B77 /* InfoPlist.strings */; };
+		C2C3A86016DF7A8400319B77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C3A85F16DF7A8400319B77 /* main.m */; };
+		C2C3A86416DF7A8400319B77 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C2C3A86216DF7A8400319B77 /* Credits.rtf */; };
+		C2C3A86716DF7A8400319B77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C3A86616DF7A8400319B77 /* AppDelegate.m */; };
+		C2C3A86A16DF7A8400319B77 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C3A86816DF7A8400319B77 /* MainMenu.xib */; };
+		C2C3A86F16DF7CBA00319B77 /* MMM Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C2C3A86E16DF7CBA00319B77 /* MMM Logo.png */; };
+		C2C3A87416DF805100319B77 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C269B9EE16C504AD0006BA03 /* CoreFoundation.framework */; };
+		C2C3A87516DF805600319B77 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F8B3016C27D5200D49492 /* CoreMIDI.framework */; };
+		C2C3A87616DF808D00319B77 /* CMMMConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A0CD0416DE37100035FB71 /* CMMMConnection.mm */; };
 		C2F172F116C274A800298B7C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2F172F016C274A800298B7C /* main.cpp */; };
 		C2F172F316C274A800298B7C /* MIDI_Middle_Man.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */; };
 /* End PBXBuildFile section */
@@ -62,6 +72,16 @@
 		C2A0CCFB16DE12900035FB71 /* MIDIMiddleManTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MIDIMiddleManTest-Prefix.pch"; sourceTree = "<group>"; };
 		C2A0CD0316DE37100035FB71 /* CMMMConnection.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = CMMMConnection.h; sourceTree = "<group>"; };
 		C2A0CD0416DE37100035FB71 /* CMMMConnection.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = CMMMConnection.mm; sourceTree = "<group>"; };
+		C2C3A85716DF7A8400319B77 /* MIDI Middle Man.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MIDI Middle Man.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2C3A85B16DF7A8400319B77 /* MIDI Middle Man App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MIDI Middle Man App-Info.plist"; sourceTree = "<group>"; };
+		C2C3A85D16DF7A8400319B77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C2C3A85F16DF7A8400319B77 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C2C3A86116DF7A8400319B77 /* MIDI Middle Man App-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MIDI Middle Man App-Prefix.pch"; sourceTree = "<group>"; };
+		C2C3A86316DF7A8400319B77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		C2C3A86516DF7A8400319B77 /* AppDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C2C3A86616DF7A8400319B77 /* AppDelegate.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = AppDelegate.m; sourceTree = "<group>"; };
+		C2C3A86916DF7A8400319B77 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C2C3A86E16DF7CBA00319B77 /* MMM Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MMM Logo.png"; path = "../MMM Logo.png"; sourceTree = "<group>"; };
 		C2F172ED16C274A800298B7C /* MIDI Middle Man */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "MIDI Middle Man"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F172F016C274A800298B7C /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = main.cpp; sourceTree = "<group>"; };
 		C2F172F216C274A800298B7C /* MIDI_Middle_Man.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIDI_Middle_Man.1; sourceTree = "<group>"; };
@@ -76,6 +96,16 @@
 				C2A0CD0116DE1B9A0035FB71 /* CoreFoundation.framework in Frameworks */,
 				C2A0CCEB16DE12900035FB71 /* SenTestingKit.framework in Frameworks */,
 				C2A0CCED16DE12900035FB71 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2C3A85416DF7A8400319B77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2C3A87516DF805600319B77 /* CoreMIDI.framework in Frameworks */,
+				C2C3A87416DF805100319B77 /* CoreFoundation.framework in Frameworks */,
+				C2C3A85816DF7A8400319B77 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,9 +155,33 @@
 		C2A0CCF316DE12900035FB71 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C2C3A86E16DF7CBA00319B77 /* MMM Logo.png */,
 				C2A0CCF416DE12900035FB71 /* MIDIMiddleManTest-Info.plist */,
 				C2A0CCF516DE12900035FB71 /* InfoPlist.strings */,
 				C2A0CCFB16DE12900035FB71 /* MIDIMiddleManTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2C3A85916DF7A8400319B77 /* MIDI Middle Man App */ = {
+			isa = PBXGroup;
+			children = (
+				C2C3A86516DF7A8400319B77 /* AppDelegate.h */,
+				C2C3A86616DF7A8400319B77 /* AppDelegate.m */,
+				C2C3A86816DF7A8400319B77 /* MainMenu.xib */,
+				C2C3A85A16DF7A8400319B77 /* Supporting Files */,
+			);
+			path = "MIDI Middle Man App";
+			sourceTree = "<group>";
+		};
+		C2C3A85A16DF7A8400319B77 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2C3A85B16DF7A8400319B77 /* MIDI Middle Man App-Info.plist */,
+				C2C3A85C16DF7A8400319B77 /* InfoPlist.strings */,
+				C2C3A85F16DF7A8400319B77 /* main.m */,
+				C2C3A86116DF7A8400319B77 /* MIDI Middle Man App-Prefix.pch */,
+				C2C3A86216DF7A8400319B77 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -140,6 +194,7 @@
 				C29F8B3016C27D5200D49492 /* CoreMIDI.framework */,
 				C2F172EF16C274A800298B7C /* MIDI Middle Man */,
 				C2A0CCF216DE12900035FB71 /* MIDIMiddleManTest */,
+				C2C3A85916DF7A8400319B77 /* MIDI Middle Man App */,
 				C2A0CCE916DE12900035FB71 /* Frameworks */,
 				C2F172EE16C274A800298B7C /* Products */,
 				C216F38616C5239800F6DC32 /* Echo.cpp */,
@@ -151,6 +206,7 @@
 			children = (
 				C2F172ED16C274A800298B7C /* MIDI Middle Man */,
 				C2A0CCE816DE12900035FB71 /* MIDIMiddleManTest.octest */,
+				C2C3A85716DF7A8400319B77 /* MIDI Middle Man.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,6 +246,23 @@
 			productName = MIDIMiddleManTest;
 			productReference = C2A0CCE816DE12900035FB71 /* MIDIMiddleManTest.octest */;
 			productType = "com.apple.product-type.bundle";
+		};
+		C2C3A85616DF7A8400319B77 /* MIDI Middle Man App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2C3A86B16DF7A8400319B77 /* Build configuration list for PBXNativeTarget "MIDI Middle Man App" */;
+			buildPhases = (
+				C2C3A85316DF7A8400319B77 /* Sources */,
+				C2C3A85416DF7A8400319B77 /* Frameworks */,
+				C2C3A85516DF7A8400319B77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MIDI Middle Man App";
+			productName = "MIDI Middle Man App";
+			productReference = C2C3A85716DF7A8400319B77 /* MIDI Middle Man.app */;
+			productType = "com.apple.product-type.application";
 		};
 		C2F172EC16C274A800298B7C /* MIDI Middle Man */ = {
 			isa = PBXNativeTarget;
@@ -231,6 +304,7 @@
 			targets = (
 				C2F172EC16C274A800298B7C /* MIDI Middle Man */,
 				C2A0CCE716DE12900035FB71 /* MIDIMiddleManTest */,
+				C2C3A85616DF7A8400319B77 /* MIDI Middle Man App */,
 			);
 		};
 /* End PBXProject section */
@@ -241,6 +315,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2A0CCF716DE12900035FB71 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2C3A85516DF7A8400319B77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2C3A85E16DF7A8400319B77 /* InfoPlist.strings in Resources */,
+				C2C3A86416DF7A8400319B77 /* Credits.rtf in Resources */,
+				C2C3A86A16DF7A8400319B77 /* MainMenu.xib in Resources */,
+				C2C3A86F16DF7CBA00319B77 /* MMM Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +358,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C2C3A85316DF7A8400319B77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2C3A86016DF7A8400319B77 /* main.m in Sources */,
+				C2C3A86716DF7A8400319B77 /* AppDelegate.m in Sources */,
+				C2C3A87616DF808D00319B77 /* CMMMConnection.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2F172E916C274A800298B7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,6 +390,30 @@
 				C2A0CCF616DE12900035FB71 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C2C3A85C16DF7A8400319B77 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2C3A85D16DF7A8400319B77 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C2C3A86216DF7A8400319B77 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2C3A86316DF7A8400319B77 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		C2C3A86816DF7A8400319B77 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2C3A86916DF7A8400319B77 /* en */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -323,6 +442,40 @@
 				INFOPLIST_FILE = "MIDIMiddleManTest/MIDIMiddleManTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		C2C3A86C16DF7A8400319B77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MIDI Middle Man App/MIDI Middle Man App-Prefix.pch";
+				INFOPLIST_FILE = "MIDI Middle Man App/MIDI Middle Man App-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "MIDI Middle Man";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C2C3A86D16DF7A8400319B77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MIDI Middle Man App/MIDI Middle Man App-Prefix.pch";
+				INFOPLIST_FILE = "MIDI Middle Man App/MIDI Middle Man App-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "MIDI Middle Man";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
@@ -388,6 +541,7 @@
 		C2F172F716C274A800298B7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -395,6 +549,7 @@
 		C2F172F816C274A800298B7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -407,6 +562,15 @@
 			buildConfigurations = (
 				C2A0CCFC16DE12900035FB71 /* Debug */,
 				C2A0CCFD16DE12900035FB71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2C3A86B16DF7A8400319B77 /* Build configuration list for PBXNativeTarget "MIDI Middle Man App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2C3A86C16DF7A8400319B77 /* Debug */,
+				C2C3A86D16DF7A8400319B77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
