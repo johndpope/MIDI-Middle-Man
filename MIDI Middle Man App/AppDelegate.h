@@ -33,6 +33,8 @@ CMMMConnection *secondMMM;
 @property (weak) IBOutlet NSTextField *sourceTextField2;
 @property (weak) IBOutlet NSTextField *destinationTextField2;
 
+- (IBAction)comboBox:(id)sender;
+@property (weak) IBOutlet NSComboBox *comboBox;
 
 // text field actions
 - (IBAction)sourceTextField1A:(NSTextField *)sender;

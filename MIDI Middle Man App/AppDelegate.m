@@ -17,6 +17,8 @@
 
 @synthesize sourceTextField1, sourceTextField2, destinationTextField1, destinationTextField2;
 
+@synthesize comboBox;
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // allocate MMM instances
@@ -33,6 +35,12 @@
     [sourceTextField2 setStringValue:@DESIRED_SOURCE_NAME_2];
     [destinationTextField1 setStringValue:@DESIRED_DESTINATION_NAME_1];
     [destinationTextField2 setStringValue:@DESIRED_DESTINATION_NAME_2];
+    
+    // ComboBox
+    [comboBox setUsesDataSource:YES];
+    [comboBox setDataSource:(id <NSComboBoxDataSource>) sourceTextField1];
+    
+    
     
 }
 
@@ -131,5 +139,7 @@ if ([whereChanged isDestinationConnected]) // if a destination is connected, tur
     {
         [secondMMM ChangeDestinationNameTo:name];
     }
+}
+- (IBAction)comboBox:(id)sender {
 }
 @end

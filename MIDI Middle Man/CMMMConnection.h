@@ -46,13 +46,11 @@
 // connection status
 @property           bool        isSourceConnected, isDestinationConnected;
 
-
 // create MMM connections with desired source
 - (id)  CreateMMMConnection:(int)number ToSource:(NSString *)desiredSourceName andDestination:(NSString *)desiredDestinationName;
 
 // change name
 - (void) ChangeSourceNameTo:(NSString *) name;
 - (void) ChangeDestinationNameTo:(NSString *) name;
-
 
 @end

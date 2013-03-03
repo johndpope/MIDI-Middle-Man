@@ -173,7 +173,6 @@ static void NotifyProc (const MIDINotification *message, void *refCon)
         isSourceConnected = true;
         [[self delegate] ConnectionStatusChanged: self]; // delegate
 
-        
     }
     else
     {
