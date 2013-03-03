@@ -11,6 +11,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #import <CoreFoundation/CFString.h>
 
+// protocol used to determine if the connection status has changed
 @protocol ConnectionStatusDelegate <NSObject>
 
 - (void) ConnectionStatusChanged:(id) objectChanged;
@@ -19,12 +20,13 @@
 
 @interface CMMMConnection : NSObject
 {
+    // MIDI things
     MIDIClientRef     client;
-
     MIDIPortRef       inputPort, outputPort;
     MIDIEndpointRef   source, destination;
     MIDIEndpointRef   inputDevice, outputDevice;
     
+    // list of the number of sources and destinations currently connected to the computer
     ItemCount         gSources, gDestinations;
     NSMutableArray    *sourceList, *destinationList;
     
@@ -32,25 +34,23 @@
 }
 
 // name and number for the instance
-@property int instanceNumber;
-@property CFStringRef instanceName;
+@property           int         instanceNumber;
+@property           CFStringRef instanceName;
 
 // name of desired source and destination from external device (e.g. Launchkey MIDI)
-@property CFStringRef       desiredSourceName, desiredDestinationName;
+@property           CFStringRef desiredSourceName, desiredDestinationName;
 
-@property (retain) id delegate;
+// delegate
+@property (retain)  id          delegate;
 
-@property     bool          isSourceConnected, isDestinationConnected;
-
+// connection status
+@property           bool        isSourceConnected, isDestinationConnected;
 
 // create MMM connections with desired source
 - (id)  CreateMMMConnection:(int)number ToSource:(NSString *)desiredSourceName andDestination:(NSString *)desiredDestinationName;
-- (id)  CreateMMMConnection:(int)number ToSource:(NSString *)desiredSourceName;
-- (id)  CreateMMMConnection:(int)number ToDestination:(NSString *)desiredDestinationName;
 
 // change name
 - (void) ChangeSourceNameTo:(NSString *) name;
 - (void) ChangeDestinationNameTo:(NSString *) name;
-
 
 @end
